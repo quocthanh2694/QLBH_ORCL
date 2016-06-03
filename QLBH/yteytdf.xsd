@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" xmlns:mstns="http://tempuri.org/nwindDataSet.xsd" id="yteytdf" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=TRANTHANH\SQLEXPRESS;Initial Catalog=QLBANHANG;Persist Security Info=True;User ID=quanlybanhang;Password=123456" IsAppSettingsProperty="false" Modifier="Assembly" ParameterPrefix="@" Provider="System.Data.SqlClient" Name="Connection" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DShoaDonAdapter" Name="DShoaDon" UserDataComponentName="DShoaDonAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Connection" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT STT, [Mã hóa đơn], [Tên nhân viên], [Tên khách hàng], Ngày, [Tên sản phẩm], [Số lượng], [Khuyến mãi (%)], [Giá bán] FROM dbo.DShoaDon</CommandText>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="STT" DataSetColumn="STT" />
+              <Mapping SourceColumn="Mã hóa đơn" DataSetColumn="Mã hóa đơn" />
+              <Mapping SourceColumn="Tên nhân viên" DataSetColumn="Tên nhân viên" />
+              <Mapping SourceColumn="Tên khách hàng" DataSetColumn="Tên khách hàng" />
+              <Mapping SourceColumn="Ngày" DataSetColumn="Ngày" />
+              <Mapping SourceColumn="Tên sản phẩm" DataSetColumn="Tên sản phẩm" />
+              <Mapping SourceColumn="Số lượng" DataSetColumn="Số lượng" />
+              <Mapping SourceColumn="Khuyến mãi (%)" DataSetColumn="Khuyến mãi (%)" />
+              <Mapping SourceColumn="Giá bán" DataSetColumn="Giá bán" />
+            </Mappings>
+          </TableAdapter>
+        </Tables>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="yteytdf" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DShoaDon">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="STT" type="xs:long" minOccurs="0" />
+              <xs:element name="Mã_x0020_hóa_x0020_đơn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tên_x0020_nhân_x0020_viên" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tên_x0020_khách_x0020_hàng">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Ngày" msdata:ReadOnly="true" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Tên_x0020_sản_x0020_phẩm">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Số_x0020_lượng" type="xs:int" minOccurs="0" />
+              <xs:element name="Khuyến_x0020_mãi_x0020__x0028__x0025__x0029_" msdata:ReadOnly="true" type="xs:int" minOccurs="0" />
+              <xs:element name="Giá_x0020_bán" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="QLBANHANGDataSet" targetNamespace="http://tempuri.org/QLBANHANGDataSet.xsd" xmlns:mstns="http://tempuri.org/QLBANHANGDataSet.xsd" xmlns="http://tempuri.org/QLBANHANGDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QLBANHANGConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QLBANHANGConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QLBH.Properties.Settings.GlobalReference.Default.QLBANHANGConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ThongKeSLSPDaBanTableAdapter" GeneratorDataComponentClassName="ThongKeSLSPDaBanTableAdapter" Name="ThongKeSLSPDaBan" UserDataComponentName="ThongKeSLSPDaBanTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLBANHANGConnectionString (Settings)" DbObjectName="QLBANHANG.dbo.ThongKeSLSPDaBan" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT [Tên sản phẩm], [ Số lượng đã bán được] FROM dbo.ThongKeSLSPDaBan</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Tên sản phẩm" DataSetColumn="Tên sản phẩm" />
+              <Mapping SourceColumn=" Số lượng đã bán được" DataSetColumn=" Số lượng đã bán được" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="QLBANHANGDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="QLBANHANGDataSet" msprop:Generator_UserDSName="QLBANHANGDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ThongKeSLSPDaBan" msprop:Generator_TableClassName="ThongKeSLSPDaBanDataTable" msprop:Generator_TableVarName="tableThongKeSLSPDaBan" msprop:Generator_TablePropName="ThongKeSLSPDaBan" msprop:Generator_RowDeletingName="ThongKeSLSPDaBanRowDeleting" msprop:Generator_RowChangingName="ThongKeSLSPDaBanRowChanging" msprop:Generator_RowEvHandlerName="ThongKeSLSPDaBanRowChangeEventHandler" msprop:Generator_RowDeletedName="ThongKeSLSPDaBanRowDeleted" msprop:Generator_UserTableName="ThongKeSLSPDaBan" msprop:Generator_RowChangedName="ThongKeSLSPDaBanRowChanged" msprop:Generator_RowEvArgName="ThongKeSLSPDaBanRowChangeEvent" msprop:Generator_RowClassName="ThongKeSLSPDaBanRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Tên_x0020_sản_x0020_phẩm" msprop:Generator_ColumnVarNameInTable="columnTên_sản_phẩm" msprop:Generator_ColumnPropNameInRow="Tên_sản_phẩm" msprop:Generator_ColumnPropNameInTable="Tên_sản_phẩmColumn" msprop:Generator_UserColumnName="Tên sản phẩm">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="_x0020_Số_x0020_lượng_x0020_đã_x0020_bán_x0020_được" msprop:Generator_ColumnVarNameInTable="column_Số_lượng_đã_bán_được" msprop:Generator_ColumnPropNameInRow="_Số_lượng_đã_bán_được" msprop:Generator_ColumnPropNameInTable="_Số_lượng_đã_bán_đượcColumn" msprop:Generator_UserColumnName=" Số lượng đã bán được" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
