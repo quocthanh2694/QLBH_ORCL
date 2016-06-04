@@ -32,11 +32,9 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.closeAbout = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
@@ -65,16 +63,35 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.label4);
-            this.groupControl1.Controls.Add(this.label3);
             this.groupControl1.Controls.Add(this.label2);
             this.groupControl1.Controls.Add(this.label1);
             this.groupControl1.Location = new System.Drawing.Point(36, 143);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(347, 121);
             this.groupControl1.TabIndex = 3;
-            this.groupControl1.Text = "Cái này là tên nhóm nè";
+            this.groupControl1.Text = "Group2 (12DTHH)";
             this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(37, 74);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(280, 19);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Phạm Trần Thị Mỹ Kiều   1211060385";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(37, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(239, 19);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Trần Quốc Thanh   1211060422";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureEdit1
             // 
@@ -84,42 +101,6 @@
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             this.pictureEdit1.Size = new System.Drawing.Size(108, 102);
             this.pictureEdit1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Trần Quốc Thanh   1211060422";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nguyễn Trúc Xinh   1211060370";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(145, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Huỳnh Tấn Tài   1211060277";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 90);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(179, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Lâm Trần Phương Duy  1211060117";
             // 
             // About
             // 
@@ -155,8 +136,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton closeAbout;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }

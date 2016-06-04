@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
+using System.Data.OracleClient;
 
 namespace QLBH.Formsss
 {
@@ -19,7 +20,7 @@ namespace QLBH.Formsss
             InitializeComponent();
         }
         ketnoi kketnoi = new ketnoi();
-        SqlCommand comd = new SqlCommand();
+        OracleCommand comd = new OracleCommand();
         DataTable dtb = new DataTable();
          int  ten,diachi,dienthoai;
          bool loi;
@@ -100,28 +101,53 @@ namespace QLBH.Formsss
         {
             if (XtraMessageBox.Show("Bạn có muốn thêm nhân viên này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string str = "insert into nhanvien values(@MANV,@TENNV,@DIACHI,@DT,@CHUCVU,@LUONG)";
+                string str = "insert into nhanvien values(:MANV,:TENNV,:DIACHI,:DT,:CHUCVU,:LUONG)";
+
+                // Kiem tra Ma so
+                bool kt = false;
+                string num="0";
+                string count = kketnoi.laydata_dong("select count (manv) from NHANVIEN");
+
+                if (count.Trim() == "")
+                    kt = true;
+                else
+                {
+                    num = kketnoi.laydata_dong("select max( SUBSTR(manv,3,2))+1 from nhanvien ");
+                    kt = false;
+                }
+                
+                // Thuc hien command
                 kketnoi.ketnoiserver();
-                comd = new SqlCommand(str, kketnoi.connect);
-                comd.Parameters.AddWithValue("@MANV", "NV" + Convert.ToInt16((kketnoi.laydata_dong("if(select count (manv) from NHANVIEN)>0	select max( SUBSTRING(manv,3,2))+1 from nhanvien else select cast (1 as int)"))).ToString("00"));
-                comd.Parameters.AddWithValue("@TENNV", tennv_txt.Text);
-                comd.Parameters.AddWithValue("@DIACHI", diachi_txt.Text.Trim());
-                comd.Parameters.AddWithValue("@DT", dienthoai_txt.Text.Trim());
-                comd.Parameters.AddWithValue("@CHUCVU", chucvu_cbx.Text);
-                comd.Parameters.AddWithValue("@LUONG", Convert.ToDouble(luong_txt.Text.ToString()));
-               
+                comd = new OracleCommand(str, kketnoi.connect);
+                if (kt == true)
+                {
+                    comd.Parameters.Add(new OracleParameter("MANV", "NV01"));
+                }
+                else
+                {
+                    comd.Parameters.Add(new OracleParameter("MANV", "NV" + Convert.ToInt16(num).ToString("00")));
+                }
+                //comd.Parameters.Add(new OracleParameter("MANV", "NV" + Convert.ToInt16((kketnoi.laydata_dong("if(select count (manv) from NHANVIEN)>0	select max( SUBSTRING(manv,3,2))+1 from nhanvien else select cast (1 as int)"))).ToString("00")));
+                comd.Parameters.Add(new OracleParameter("TENNV", tennv_txt.Text));
+                comd.Parameters.Add(new OracleParameter("DIACHI", diachi_txt.Text.Trim()));
+                comd.Parameters.Add(new OracleParameter("DT", dienthoai_txt.Text.Trim()));
+                comd.Parameters.Add(new OracleParameter("CHUCVU", chucvu_cbx.Text));
+                comd.Parameters.Add(new OracleParameter("LUONG", Convert.ToDouble(luong_txt.Text.ToString())));
+                
+
                 comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
                 updatelist();
                 XtraMessageBox.Show("Thêm thành công");
                 lammoi();
+                
             }
             else
                 tennv_txt.Focus();
         }
         private void updatelist()
         {
-            dtb = kketnoi.laydata("select *,cast(0 as bit) as Chon from nhanvien");
+            dtb = kketnoi.laydata("select * from nhanvien");
             nhanvien_gridcontrol.DataSource = dtb;
         }
         private void lammoi()
@@ -164,13 +190,13 @@ namespace QLBH.Formsss
         {
             if (XtraMessageBox.Show("Bạn có muốn sửa nhân viên này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string str = "update nhanvien set MANV=@MANV,TENNV=@TENNV,DIACHI=@DIACHI,DT=@DT,LUONG=@LUONG,CHUCVU=@CHUCVU where MANV=@MANV";
+                string str = "update nhanvien set MANV=:MANV,TENNV=:TENNV,DIACHI=:DIACHI,DT=:DT,LUONG=:LUONG,CHUCVU=:CHUCVU where MANV=:MANV";
                 kketnoi.ketnoiserver();
-                comd = new SqlCommand(str, kketnoi.connect);
-                comd.Parameters.AddWithValue("@MANV", manv_txt.Text.Trim());
-                comd.Parameters.AddWithValue("@TENNV", tennv_txt.Text.Trim());
-                comd.Parameters.AddWithValue("@DIACHI", diachi_txt.Text.Trim());
-                comd.Parameters.AddWithValue("@DT", dienthoai_txt.Text.Trim());
+                comd = new OracleCommand(str, kketnoi.connect);
+                comd.Parameters.AddWithValue("MANV", manv_txt.Text.Trim());
+                comd.Parameters.AddWithValue("TENNV", tennv_txt.Text.Trim());
+                comd.Parameters.AddWithValue("DIACHI", diachi_txt.Text.Trim());
+                comd.Parameters.AddWithValue("DT", dienthoai_txt.Text.Trim());
                 comd.Parameters.AddWithValue("LUONG", Convert.ToDouble(luong_txt.Text.ToString()));
                 comd.Parameters.AddWithValue("CHUCVU", chucvu_cbx.Text);
 
@@ -191,25 +217,35 @@ namespace QLBH.Formsss
         {
             try
             {
-                k = false;
-                DataTable dt = nhanvien_gridcontrol.DataSource as DataTable;
-                if (dt == null)
-                    return;
-                DataRow[] rows = dt.Select("Chon=true");
-                if(rows.Count()>0)
-                    if (XtraMessageBox.Show("Bạn có muốn xóa những nhân viên này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
-                        foreach (DataRow r in rows)
-                        {
-                            string manv = r["MANV"].ToString();
-                            xoadl(manv);
+                //k = false;
+                //DataTable dt = nhanvien_gridcontrol.DataSource as DataTable;
+                //if (dt == null)
+                //    return;
+                //DataRow[] rows = dt.Select("Chon=true");
+                //if(rows.Count()>0)
+                //    if (XtraMessageBox.Show("Bạn có muốn xóa những nhân viên này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+                //        foreach (DataRow r in rows)
+                //        {
+                //            string manv = r["MANV"].ToString();
+                //            xoadl(manv);
                     
-                        }
-                if (k == true)
+                //        }
+                //if (k == true)
+                //{
+                //    updatelist();
+                //    XtraMessageBox.Show("Đã xóa");
+                //    lammoi();
+                    
+                //}
+
+                if (manv_txt.Text.Trim() != "")
                 {
+                    if (XtraMessageBox.Show("Bạn có muốn xóa nhân viên này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        xoadl(manv_txt.Text.Trim());
+                    }
                     updatelist();
-                    XtraMessageBox.Show("Đã xóa");
                     lammoi();
-                    
                 }
 
             }
@@ -221,13 +257,13 @@ namespace QLBH.Formsss
 
         private void xoadl(string ma)
         {          
-                string str = "delete from nhanvien where MANV=@MANV";
+                string str = "delete from nhanvien where MANV=:MANV";
                 kketnoi.ketnoiserver();
-                comd = new SqlCommand(str, kketnoi.connect);
-                comd.Parameters.AddWithValue("@MANV", ma);
+                comd = new OracleCommand(str, kketnoi.connect);
+                comd.Parameters.Add(new OracleParameter("MANV", ma));
                 comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
-                 k = true;
+                 
             
         }
         public void GetValue(String str1)
@@ -293,6 +329,8 @@ namespace QLBH.Formsss
             { 
                 string sql = "select* from nhanvien where manv like  '"+manv_txt.Text+"'";
                 DataTable dttb = kketnoi.laydata(sql);
+                if (dttb.Rows.Count == 0)
+                    return;
                 manv_txt.Text = dttb.Rows[0]["MANV"].ToString();
                 tennv_txt.Text = dttb.Rows[0]["TENNV"].ToString();
                 diachi_txt.Text = dttb.Rows[0]["Diachi"].ToString();
@@ -336,6 +374,11 @@ namespace QLBH.Formsss
         }
 
         private void panelControl4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelControl2_Paint(object sender, PaintEventArgs e)
         {
 
         }

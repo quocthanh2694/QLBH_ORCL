@@ -298,7 +298,7 @@
             this.girdcolumn1.Name = "girdcolumn1";
             this.girdcolumn1.OptionsColumn.AllowEdit = false;
             this.girdcolumn1.Visible = true;
-            this.girdcolumn1.VisibleIndex = 1;
+            this.girdcolumn1.VisibleIndex = 0;
             this.girdcolumn1.Width = 61;
             // 
             // gridColumn2
@@ -308,7 +308,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 140;
             // 
             // gridColumn3
@@ -318,7 +318,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
+            this.gridColumn3.VisibleIndex = 2;
             this.gridColumn3.Width = 122;
             // 
             // gridColumn4
@@ -328,7 +328,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
+            this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 93;
             // 
             // gridColumn1
@@ -338,8 +338,6 @@
             this.gridColumn1.FieldName = "Chon";
             this.gridColumn1.MaxWidth = 50;
             this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
             this.gridColumn1.Width = 40;
             // 
             // repositoryItemCheckEdit1
@@ -355,7 +353,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 5;
+            this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 89;
             // 
             // gridColumn6
@@ -365,7 +363,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 6;
+            this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 123;
             // 
             // panelControl2
@@ -379,6 +377,7 @@
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1268, 107);
             this.panelControl2.TabIndex = 18;
+            this.panelControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.panelControl2_Paint);
             // 
             // timkiem_btn
             // 

@@ -151,6 +151,7 @@
             this.ketnoidatabase.Size = new System.Drawing.Size(164, 31);
             this.ketnoidatabase.TabIndex = 16;
             this.ketnoidatabase.Text = "Kết nối Database";
+            this.ketnoidatabase.Visible = false;
             this.ketnoidatabase.Click += new System.EventHandler(this.ketnoidatabase_Click_1);
             // 
             // dangnhapbtn

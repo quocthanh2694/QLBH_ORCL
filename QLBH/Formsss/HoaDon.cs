@@ -89,14 +89,14 @@ namespace QLBH.Formsss
             {
                 string str = "insert into hoadon values(@MAHD,@NGAY,@MAKH,@TONGTG,@MANV)";
                 kketnoi.ketnoiserver();
-                comd = new SqlCommand(str, kketnoi.connect);
-                comd.Parameters.AddWithValue("@MAHD", "HD" + Convert.ToInt16((kketnoi.laydata_dong("if( select count(mahd) from hoadon)>0 select max( SUBSTRING(mahd,3,3))+1 from hoadon else select CAST ( 1 as int )"))).ToString("000"));
-                comd.Parameters.AddWithValue("@NGAY",Convert.ToDateTime(Ngay_txt.Text));
-                comd.Parameters.AddWithValue("@MAKH", makhachhang_txt.Text);
-                comd.Parameters.AddWithValue("@TONGTG", tongtg_txt.Text);
-                comd.Parameters.AddWithValue("@MANV", manv_txt.Text);
+                //comd = new SqlCommand(str, kketnoi.connect);
+                //comd.Parameters.AddWithValue("@MAHD", "HD" + Convert.ToInt16((kketnoi.laydata_dong("if( select count(mahd) from hoadon)>0 select max( SUBSTRING(mahd,3,3))+1 from hoadon else select CAST ( 1 as int )"))).ToString("000"));
+                //comd.Parameters.AddWithValue("@NGAY",Convert.ToDateTime(Ngay_txt.Text));
+                //comd.Parameters.AddWithValue("@MAKH", makhachhang_txt.Text);
+                //comd.Parameters.AddWithValue("@TONGTG", tongtg_txt.Text);
+                //comd.Parameters.AddWithValue("@MANV", manv_txt.Text);
 
-                comd.ExecuteNonQuery();
+                //comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
                 updatelist();
                 XtraMessageBox.Show("Thêm thành công");
@@ -157,14 +157,14 @@ namespace QLBH.Formsss
             {
                 string str = " update hoadon set NGAY=@NGAY,MAKH=@MAKH,TONGTG=@TONGTG,MANV=@MANV where MAHD=@MAHD";
                 kketnoi.ketnoiserver();
-                SqlCommand comd = new SqlCommand(str, kketnoi.connect);
-                comd.Parameters.AddWithValue("@MAHD", mahoadon_txt.Text);
-                comd.Parameters.AddWithValue("@NGAY",Ngay_txt.Text);
-                comd.Parameters.AddWithValue("@MAKH", makhachhang_txt.Text);
-                comd.Parameters.AddWithValue("@TONGTG", tongtg_txt.Text);
-                comd.Parameters.AddWithValue("@MANV", manv_txt.Text);
+                //SqlCommand comd = new SqlCommand(str, kketnoi.connect);
+                //comd.Parameters.AddWithValue("@MAHD", mahoadon_txt.Text);
+                //comd.Parameters.AddWithValue("@NGAY",Ngay_txt.Text);
+                //comd.Parameters.AddWithValue("@MAKH", makhachhang_txt.Text);
+                //comd.Parameters.AddWithValue("@TONGTG", tongtg_txt.Text);
+                //comd.Parameters.AddWithValue("@MANV", manv_txt.Text);
               
-                comd.ExecuteNonQuery();
+                //comd.ExecuteNonQuery();
 
                 kketnoi.connect.Close();
                 updatelist();
@@ -211,9 +211,9 @@ namespace QLBH.Formsss
 
             string str = "delete from hoadon where MAHD=@MAHD";
             kketnoi.ketnoiserver();
-            SqlCommand comd = new SqlCommand(str, kketnoi.connect);
-            comd.Parameters.AddWithValue("@MAHD", ma);
-            comd.ExecuteNonQuery();
+            //SqlCommand comd = new SqlCommand(str, kketnoi.connect);
+            //comd.Parameters.AddWithValue("@MAHD", ma);
+            //comd.ExecuteNonQuery();
 
             kketnoi.connect.Close();
             k = true;

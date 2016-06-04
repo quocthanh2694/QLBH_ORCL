@@ -78,14 +78,14 @@ namespace QLBH.Formsss
                 //{
                     string str = "tongluong @thang,@nam";
                     kketnoi.connect.Open();
-                    SqlCommand comd = new SqlCommand(str, kketnoi.connect);
+                    //SqlCommand comd = new SqlCommand(str, kketnoi.connect);
 
-                    comd.Parameters.AddWithValue("@thang", thang);
-                    comd.Parameters.AddWithValue("@nam", nam);
-                    comd.ExecuteNonQuery();
+                    //comd.Parameters.AddWithValue("@thang", thang);
+                    //comd.Parameters.AddWithValue("@nam", nam);
+                    //comd.ExecuteNonQuery();
 
                     SqlDataAdapter adata = new SqlDataAdapter();
-                    adata.SelectCommand = comd;
+                    //adata.SelectCommand = comd;
                     DataTable dtb = new DataTable();
                     adata.Fill(dtb);
                     adata.Dispose();

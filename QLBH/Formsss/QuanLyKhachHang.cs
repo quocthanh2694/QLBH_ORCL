@@ -112,14 +112,14 @@ namespace QLBH.Formsss
             {
                 string str = "insert into khachhang values(@makh,@tenkh,@diachi,@dt,@mail,@ns)";
                 kketnoi.ketnoiserver();
-                SqlCommand comd = new SqlCommand(str, kketnoi.connect);
-                comd.Parameters.AddWithValue("@makh", "KH" + Convert.ToInt16(kketnoi.laydata_dong("if( select count(makh) from khachhang)>0 select max(substring(makh,3,2))+1 from KHACHHANG else select CAST ( 1 as int )")).ToString("00"));
-                comd.Parameters.AddWithValue("@tenkh", tenkhachhang_txt.Text);
-                comd.Parameters.AddWithValue("@diachi",diachi_txt.Text);
-                comd.Parameters.AddWithValue("@dt", dienthoai_txt.Text);
-                comd.Parameters.AddWithValue("@mail", mail_txt.Text);
-                comd.Parameters.AddWithValue("@ns",Convert.ToDateTime(ngaysinh_dateEdit.Text));
-                comd.ExecuteNonQuery();
+                //SqlCommand comd = new SqlCommand(str, kketnoi.connect);
+                //comd.Parameters.AddWithValue("@makh", "KH" + Convert.ToInt16(kketnoi.laydata_dong("if( select count(makh) from khachhang)>0 select max(substring(makh,3,2))+1 from KHACHHANG else select CAST ( 1 as int )")).ToString("00"));
+                //comd.Parameters.AddWithValue("@tenkh", tenkhachhang_txt.Text);
+                //comd.Parameters.AddWithValue("@diachi",diachi_txt.Text);
+                //comd.Parameters.AddWithValue("@dt", dienthoai_txt.Text);
+                //comd.Parameters.AddWithValue("@mail", mail_txt.Text);
+                //comd.Parameters.AddWithValue("@ns",Convert.ToDateTime(ngaysinh_dateEdit.Text));
+                //comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
                 UpdateList();
                 XtraMessageBox.Show("Thêm thành công!");
@@ -151,14 +151,14 @@ namespace QLBH.Formsss
             {
                 string str = " update khachhang set TENKH=@tenkh,DIACHI=@diachi,DT=@dt,MAIL=@mail,NGAYSINH=@ns where MAKH=@makh";
                 kketnoi.ketnoiserver();
-                SqlCommand comd = new SqlCommand(str, kketnoi.connect);
-                comd.Parameters.AddWithValue("@makh", makh_txt.Text);
-                comd.Parameters.AddWithValue("@tenkh", tenkhachhang_txt.Text);
-                comd.Parameters.AddWithValue("@ns", Convert.ToDateTime(ngaysinh_dateEdit.Text));
-                comd.Parameters.AddWithValue("@diachi", diachi_txt.Text);
-                comd.Parameters.AddWithValue("@dt", dienthoai_txt.Text);
-                comd.Parameters.AddWithValue("@mail", mail_txt.Text);
-                comd.ExecuteNonQuery();
+                //SqlCommand comd = new SqlCommand(str, kketnoi.connect);
+                //comd.Parameters.AddWithValue("@makh", makh_txt.Text);
+                //comd.Parameters.AddWithValue("@tenkh", tenkhachhang_txt.Text);
+                //comd.Parameters.AddWithValue("@ns", Convert.ToDateTime(ngaysinh_dateEdit.Text));
+                //comd.Parameters.AddWithValue("@diachi", diachi_txt.Text);
+                //comd.Parameters.AddWithValue("@dt", dienthoai_txt.Text);
+                //comd.Parameters.AddWithValue("@mail", mail_txt.Text);
+                //comd.ExecuteNonQuery();
 
                 kketnoi.connect.Close();
                 UpdateList();
@@ -206,9 +206,9 @@ namespace QLBH.Formsss
         {
             string str = "delete from khachhang where MAKH=@makh";
             kketnoi.ketnoiserver();
-            SqlCommand comd = new SqlCommand(str, kketnoi.connect);
-            comd.Parameters.AddWithValue("@makh", ma);
-            comd.ExecuteNonQuery();
+            //SqlCommand comd = new SqlCommand(str, kketnoi.connect);
+            //comd.Parameters.AddWithValue("@makh", ma);
+            //comd.ExecuteNonQuery();
 
             kketnoi.connect.Close();
             k = true;

@@ -149,14 +149,14 @@ namespace QLBH.Formsss
             {
                 string str = "insert into cthd values(@MAHD,@MAVT,@SL,@KHUYENMAI,@GIABAN,@STT)";
                 kketnoi.ketnoiserver();
-                comd = new SqlCommand(str, kketnoi.connect);
-                comd.Parameters.AddWithValue("@MAHD", mahd_txt.Text);
-                comd.Parameters.AddWithValue("@MAVT", mavt_txt.Text);
-                comd.Parameters.AddWithValue("@SL", Convert.ToDouble(soluong_txt.Text));
-                comd.Parameters.AddWithValue("@KHUYENMAI",0);
-                comd.Parameters.AddWithValue("@GIABAN", Convert.ToDouble(giaban_txt.Text));
-                comd.Parameters.AddWithValue("@STT", kketnoi.laydata_dong("if  (select count(stt) from cthd)>0 select max(STT)+1 from cthd else  select CAST ( 1 as int) "));
-                comd.ExecuteNonQuery();
+                //comd = new SqlCommand(str, kketnoi.connect);
+                //comd.Parameters.AddWithValue("@MAHD", mahd_txt.Text);
+                //comd.Parameters.AddWithValue("@MAVT", mavt_txt.Text);
+                //comd.Parameters.AddWithValue("@SL", Convert.ToDouble(soluong_txt.Text));
+                //comd.Parameters.AddWithValue("@KHUYENMAI",0);
+                //comd.Parameters.AddWithValue("@GIABAN", Convert.ToDouble(giaban_txt.Text));
+                //comd.Parameters.AddWithValue("@STT", kketnoi.laydata_dong("if  (select count(stt) from cthd)>0 select max(STT)+1 from cthd else  select CAST ( 1 as int) "));
+                //comd.ExecuteNonQuery();
 
                 kketnoi.connect.Close();
                 //updatelist();
@@ -231,15 +231,15 @@ namespace QLBH.Formsss
                 {
                     string str = " update cthd set MAHD=@MAHD,MAVT=@MAVT,SL=@SL,KHUYENMAI=@KHUYENMAI,GIABAN=@GIABAN where STT=@STT";
                     kketnoi.ketnoiserver();
-                    SqlCommand comd = new SqlCommand(str, kketnoi.connect);
-                    comd.Parameters.AddWithValue("@MAHD", mahd_txt.Text);
-                    comd.Parameters.AddWithValue("MAVT", mavt_txt.Text);
-                    comd.Parameters.AddWithValue("@SL", Convert.ToDouble(soluong_txt.Text));
-                    comd.Parameters.AddWithValue("@KHUYENMAI", 0);
-                    comd.Parameters.AddWithValue("@GIABAN", Convert.ToDouble(giaban_txt.Text));
-                    comd.Parameters.AddWithValue("@STT", stt_txt.Text);
+                    //SqlCommand comd = new SqlCommand(str, kketnoi.connect);
+                    //comd.Parameters.AddWithValue("@MAHD", mahd_txt.Text);
+                    //comd.Parameters.AddWithValue("MAVT", mavt_txt.Text);
+                    //comd.Parameters.AddWithValue("@SL", Convert.ToDouble(soluong_txt.Text));
+                    //comd.Parameters.AddWithValue("@KHUYENMAI", 0);
+                    //comd.Parameters.AddWithValue("@GIABAN", Convert.ToDouble(giaban_txt.Text));
+                    //comd.Parameters.AddWithValue("@STT", stt_txt.Text);
 
-                    comd.ExecuteNonQuery();
+                    //comd.ExecuteNonQuery();
 
                     kketnoi.connect.Close();
                     //updatelist();
@@ -292,9 +292,9 @@ namespace QLBH.Formsss
         {
             string str = "delete from cthd where STT=@STT";
             kketnoi.ketnoiserver();
-            SqlCommand comd = new SqlCommand(str, kketnoi.connect);
-            comd.Parameters.AddWithValue("@STT", ma);
-            comd.ExecuteNonQuery();
+            //SqlCommand comd = new SqlCommand(str, kketnoi.connect);
+            //comd.Parameters.AddWithValue("@STT", ma);
+            //comd.ExecuteNonQuery();
             kketnoi.connect.Close();
             k = true;
         }

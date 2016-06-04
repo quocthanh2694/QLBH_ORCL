@@ -60,7 +60,7 @@ namespace QLBH.Formsss
                 DataTable dtb = new DataTable();
                 try
                 {
-                    string stri = "select username,convert(varchar(100),DECRYPTBYPASSPHRASE('txt',password)) from dangnhap where username='" + tendangnhaptxt.Text + "' and convert(varchar(100),DECRYPTBYPASSPHRASE('txt',password))='" + matkhautxt.Text + "'";
+                    string stri = "select username,password from dangnhap where username='" + tendangnhaptxt.Text + "' and password='" + matkhautxt.Text + "'";
                     dtb = k.laydata(stri);
                     ktketnoi = true;
                     splashScreenManager1.CloseWaitForm();
@@ -151,7 +151,7 @@ namespace QLBH.Formsss
                      StreamReader file = new StreamReader(fileName);
                      string s = file.ReadLine().ToString().Trim();
                    
-                     string r = "select username,convert(varchar(100),DECRYPTBYPASSPHRASE('txt',password)) from DangNhap where username='"+s+"'";
+                     string r = "select username,password from DangNhap where username='"+s+"'";
                      nhoTenDangNhapCheck.Checked = true;
                      t = k.laydata(r);
                      tendangnhaptxt.Text = t.Rows[0][0].ToString();
@@ -162,7 +162,7 @@ namespace QLBH.Formsss
                      StreamReader file = new StreamReader(fileName);
                      string s = file.ReadLine().ToString().Trim();
 
-                     string r = "select username,convert(varchar(100),DECRYPTBYPASSPHRASE('txt',password)) from DangNhap where username='"+s+"'";
+                     string r = "select username,password from DangNhap where username='"+s+"'";
                      NhoMatKhauCheck.Checked = true;
                      t = k.laydata(r);
                      matkhautxt.Text = t.Rows[0][1].ToString();

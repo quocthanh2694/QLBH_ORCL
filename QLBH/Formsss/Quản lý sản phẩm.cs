@@ -154,13 +154,13 @@ namespace QLBH.Formsss
             {
                 string str = "insert into VATTU values(@MAVT,@TENVT,@DVT,@GIAMUA,@SLTON)";
                 kketnoi.ketnoiserver();
-                comd = new SqlCommand(str, kketnoi.connect);
-                comd.Parameters.AddWithValue("@MAVT", "VT" + Convert.ToInt16((kketnoi.laydata_dong("if( select count (mavt) from vattu )>0 select max( SUBSTRING(mavt,3,2))+1 from vattu else select cast (1 as int)"))).ToString("00"));
-                comd.Parameters.AddWithValue("@TENVT", tenvt_txt.Text.Trim());
-                comd.Parameters.AddWithValue("@DVT", dvt_lkp.Text.Trim());
-                comd.Parameters.AddWithValue("@GIAMUA", Convert.ToDouble(giamua_txt.Text.Trim()));
-                comd.Parameters.AddWithValue("@SLTON", Convert.ToDouble(slton_txt.Text.Trim()));
-                comd.ExecuteNonQuery();
+                //comd = new SqlCommand(str, kketnoi.connect);
+                //comd.Parameters.AddWithValue("@MAVT", "VT" + Convert.ToInt16((kketnoi.laydata_dong("if( select count (mavt) from vattu )>0 select max( SUBSTRING(mavt,3,2))+1 from vattu else select cast (1 as int)"))).ToString("00"));
+                //comd.Parameters.AddWithValue("@TENVT", tenvt_txt.Text.Trim());
+                //comd.Parameters.AddWithValue("@DVT", dvt_lkp.Text.Trim());
+                //comd.Parameters.AddWithValue("@GIAMUA", Convert.ToDouble(giamua_txt.Text.Trim()));
+                //comd.Parameters.AddWithValue("@SLTON", Convert.ToDouble(slton_txt.Text.Trim()));
+                //comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
                 updatelist();
                 XtraMessageBox.Show("Thêm thành công");
@@ -212,13 +212,13 @@ namespace QLBH.Formsss
             {
                 string str = "update vattu set @MAVT=@MAVT,TENVT=@TENVT,DVT=@DVT,GIAMUA=@GIAMUA,SLTON=@SLTON where MAVT=@MAVT";
                 kketnoi.ketnoiserver();
-                comd = new SqlCommand(str, kketnoi.connect);
-                comd.Parameters.AddWithValue("@MAVT", mavt_txt.Text);
-                comd.Parameters.AddWithValue("@TENVT", tenvt_txt.Text);
-                comd.Parameters.AddWithValue("@DVT", dvt_lkp.Text.Trim());
-                comd.Parameters.AddWithValue("@GIAMUA", Convert.ToDouble(giamua_txt.Text.Trim()));
-                comd.Parameters.AddWithValue("@SLTON", Convert.ToDouble(slton_txt.Text.Trim()));
-                comd.ExecuteNonQuery();
+                //comd = new SqlCommand(str, kketnoi.connect);
+                //comd.Parameters.AddWithValue("@MAVT", mavt_txt.Text);
+                //comd.Parameters.AddWithValue("@TENVT", tenvt_txt.Text);
+                //comd.Parameters.AddWithValue("@DVT", dvt_lkp.Text.Trim());
+                //comd.Parameters.AddWithValue("@GIAMUA", Convert.ToDouble(giamua_txt.Text.Trim()));
+                //comd.Parameters.AddWithValue("@SLTON", Convert.ToDouble(slton_txt.Text.Trim()));
+                //comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
                 updatelist();
                 XtraMessageBox.Show("Sửa thành công");
@@ -264,9 +264,9 @@ namespace QLBH.Formsss
         {
                 string str = "delete from vattu where MAVT=@MAVT";
                 kketnoi.ketnoiserver();
-                comd = new SqlCommand(str, kketnoi.connect);
-                comd.Parameters.AddWithValue("@MAVT", ma);
-                comd.ExecuteNonQuery();
+                //comd = new SqlCommand(str, kketnoi.connect);
+                //comd.Parameters.AddWithValue("@MAVT", ma);
+                //comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
 
         }
