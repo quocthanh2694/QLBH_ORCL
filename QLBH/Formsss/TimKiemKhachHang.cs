@@ -34,7 +34,7 @@ namespace QLBH.Formsss
             }
             catch (Exception rex)
             {
-                MessageBox.Show(rex.ToString());
+               // MessageBox.Show(rex.ToString());
             }
 
         }

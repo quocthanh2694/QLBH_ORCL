@@ -135,8 +135,8 @@
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "Mã vật tư";
-            this.gridColumn1.FieldName = "MAVT";
+            this.gridColumn1.Caption = "Mã sản phẩm";
+            this.gridColumn1.FieldName = "MASP";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
@@ -145,8 +145,8 @@
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "Tên vật tư";
-            this.gridColumn2.FieldName = "TENVT";
+            this.gridColumn2.Caption = "Tên sản phẩm";
+            this.gridColumn2.FieldName = "TENSP";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;

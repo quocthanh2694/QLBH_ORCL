@@ -211,21 +211,21 @@
             // girdcolumn1
             // 
             this.girdcolumn1.Caption = "Mã sản phẩm";
-            this.girdcolumn1.FieldName = "MAVT";
+            this.girdcolumn1.FieldName = "MASP";
             this.girdcolumn1.Name = "girdcolumn1";
             this.girdcolumn1.OptionsColumn.AllowEdit = false;
             this.girdcolumn1.Visible = true;
-            this.girdcolumn1.VisibleIndex = 1;
+            this.girdcolumn1.VisibleIndex = 0;
             this.girdcolumn1.Width = 78;
             // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Tên sản phẩm";
-            this.gridColumn2.FieldName = "TENVT";
+            this.gridColumn2.FieldName = "TENSP";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 110;
             // 
             // gridColumn3
@@ -235,7 +235,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
+            this.gridColumn3.VisibleIndex = 2;
             this.gridColumn3.Width = 110;
             // 
             // gridColumn4
@@ -245,7 +245,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
+            this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 110;
             // 
             // gridColumn5
@@ -255,7 +255,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 5;
+            this.gridColumn5.VisibleIndex = 4;
             this.gridColumn5.Width = 143;
             // 
             // colCheck
@@ -264,8 +264,6 @@
             this.colCheck.ColumnEdit = this.repositoryItemCheckEdit2;
             this.colCheck.FieldName = "Chon";
             this.colCheck.Name = "colCheck";
-            this.colCheck.Visible = true;
-            this.colCheck.VisibleIndex = 0;
             this.colCheck.Width = 37;
             // 
             // repositoryItemCheckEdit2

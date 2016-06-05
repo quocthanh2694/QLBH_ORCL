@@ -42,7 +42,7 @@ namespace QLBH.Formsss
         {
             try
             {
-                string sql = "select  MAVT,TENVT,DVT,GIAMUA,SLTON from vattu where TENVT like N'%" + tenvt_txt.Text + "%' and DVT like N'%" + dvt_text.Text + "%' and giamua like '%" + giamua_text.Text + "%' and slton like '%" + slton_text.Text + "%'";
+                string sql = "select  MASP,TENSP,DVT,GIAMUA,SLTON from sanpham where TENsp like N'%" + tenvt_txt.Text + "%' and DVT like N'%" + dvt_text.Text + "%' and giamua like '%" + giamua_text.Text + "%' and slton like '%" + slton_text.Text + "%'";
                 gridControl1.DataSource = kketnoi.laydata(sql);
             }
             catch (Exception )
@@ -73,7 +73,7 @@ namespace QLBH.Formsss
         {
             if (gridView1.RowCount>0)//Convert.ToInt16(gridView1.FocusedRowHandle) > -1)
             {
-                string id = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "MAVT").ToString();
+                string id = gridView1.GetRowCellValue(gridView1.FocusedRowHandle, "MASP").ToString();
                 if (getdata != null)
                 {
                     getdata(id);

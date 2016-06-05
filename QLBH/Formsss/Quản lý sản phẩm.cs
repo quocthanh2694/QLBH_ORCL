@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
+using System.Data.OracleClient;
 
 namespace QLBH.Formsss
 {
@@ -31,7 +32,7 @@ namespace QLBH.Formsss
         }
         private void updatelist()
         {
-            dtb = kketnoi.laydata("select *, cast(0 as bit) as Chon  from vattu");
+            dtb = kketnoi.laydata("select *  from sanpham");
             vattu_gridcontrol.DataSource = dtb;
          
         }
@@ -59,7 +60,7 @@ namespace QLBH.Formsss
             }
             return r;
         }
-        public int ktt=0,kt = 0, kts = 0,ktdvt1=0;
+        public int ktt=0,kt = 0, kts = 0,ktdsp1=0;
         public int ktrten()
         {
             if (tenvt_txt.Text== "")
@@ -84,13 +85,13 @@ namespace QLBH.Formsss
                 kts = 0;
             return kts;
         }
-        public int ktdvt()
+        public int ktdsp()
         {
             if (dvt_lkp.Text == "")
-                ktdvt1 = 1;
+                ktdsp1 = 1;
             else 
-                ktdvt1 = 0;
-            return ktdvt1;
+                ktdsp1 = 0;
+            return ktdsp1;
         }
 
 
@@ -109,7 +110,7 @@ namespace QLBH.Formsss
                 loi = true;
                 thongbao =thongbao + "\n Vật tư này đã có! ";
             }
-            if (ktdvt() == 1)
+            if (ktdsp() == 1)
             {
                 loi = true;
                 thongbao = thongbao + "\n Vui lòng chọn đơn vị tính! ";
@@ -152,15 +153,39 @@ namespace QLBH.Formsss
         {
             if (XtraMessageBox.Show("Bạn có muốn thêm sản phẩm này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string str = "insert into VATTU values(@MAVT,@TENVT,@DVT,@GIAMUA,@SLTON)";
+                string str = "insert into sanpham values(:MAsp,:TENsp,:Dvt,:GIAMUA,:SLTON)";
+                // Kiem tra Ma so
+                bool kt = false;
+                string num = "0";
+                string count = kketnoi.laydata_dong("select count (masp) from sanpham");
+
+                if (count.Trim() == "")
+                    kt = true;
+                else
+                {
+                    num = kketnoi.laydata_dong("select max( SUBSTR(masp,3,2))+1 from sanpham ");
+                    kt = false;
+                }
+
                 kketnoi.ketnoiserver();
+                // Thực hiện command
+                OracleCommand comd = new OracleCommand(str, kketnoi.connect);
+                if (kt == true)
+                {
+                    comd.Parameters.Add(new OracleParameter("MAsp", "KH01"));
+                }
+                else
+                {
+                    comd.Parameters.Add(new OracleParameter("MAsp", "SP" + Convert.ToInt16(num).ToString("00")));
+                }
+
                 //comd = new SqlCommand(str, kketnoi.connect);
-                //comd.Parameters.AddWithValue("@MAVT", "VT" + Convert.ToInt16((kketnoi.laydata_dong("if( select count (mavt) from vattu )>0 select max( SUBSTRING(mavt,3,2))+1 from vattu else select cast (1 as int)"))).ToString("00"));
-                //comd.Parameters.AddWithValue("@TENVT", tenvt_txt.Text.Trim());
-                //comd.Parameters.AddWithValue("@DVT", dvt_lkp.Text.Trim());
-                //comd.Parameters.AddWithValue("@GIAMUA", Convert.ToDouble(giamua_txt.Text.Trim()));
-                //comd.Parameters.AddWithValue("@SLTON", Convert.ToDouble(slton_txt.Text.Trim()));
-                //comd.ExecuteNonQuery();
+                //comd.Parameters.AddWithValue(":MAsp", "sp" + Convert.ToInt16((kketnoi.laydata_dong("if( select count (masp) from vattu )>0 select max( SUBSTRING(masp,3,2))+1 from vattu else select cast (1 as int)"))).ToString("00"));
+                comd.Parameters.AddWithValue(":TENsp", tenvt_txt.Text.Trim());
+                comd.Parameters.AddWithValue(":Dvt", dvt_lkp.Text.Trim());
+                comd.Parameters.AddWithValue(":GIAMUA", Convert.ToDouble(giamua_txt.Text.Trim()));
+                comd.Parameters.AddWithValue(":SLTON", Convert.ToDouble(slton_txt.Text.Trim()));
+                comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
                 updatelist();
                 XtraMessageBox.Show("Thêm thành công");
@@ -170,19 +195,19 @@ namespace QLBH.Formsss
                 tenvt_txt.Focus();
         }
 
-        bool ktsuavt;
-        private void ktsuavtu()
+        bool ktsuasp;
+        private void ktsuaspu()
         {
-            ktsuavt = false;
+            ktsuasp = false;
             for (int i = 0; i < vattu_gridview.RowCount; i++)
             {
                 if (dtb.Rows[i][1].ToString().ToUpper() == tenvt_txt.Text.ToUpper() & dtb.Rows[i][0].ToString().ToUpper() != mavt_txt.Text.ToUpper())
                 {
-                   ktsuavt=true;
+                   ktsuasp=true;
                 }
     
             }
-            if (ktsuavt == true)
+            if (ktsuasp == true)
                 XtraMessageBox.Show("Sản phẩm này đã có", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void sua_btn_Click(object sender, EventArgs e)
@@ -195,8 +220,8 @@ namespace QLBH.Formsss
                 }
                 else
                 {
-                    ktsuavtu();
-                    if(ktsuavt==false)
+                    ktsuaspu();
+                    if(ktsuasp==false)
                         suadl();
                 }
             }
@@ -210,15 +235,15 @@ namespace QLBH.Formsss
         {
             if (XtraMessageBox.Show("Bạn có muốn sửa sản phẩm này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string str = "update vattu set @MAVT=@MAVT,TENVT=@TENVT,DVT=@DVT,GIAMUA=@GIAMUA,SLTON=@SLTON where MAVT=@MAVT";
+                string str = "update sanpham set TENsp=:TENsp,Dvt=:Dsp,GIAMUA=:GIAMUA,SLTON=:SLTON where MAsp=:MAsp";
                 kketnoi.ketnoiserver();
-                //comd = new SqlCommand(str, kketnoi.connect);
-                //comd.Parameters.AddWithValue("@MAVT", mavt_txt.Text);
-                //comd.Parameters.AddWithValue("@TENVT", tenvt_txt.Text);
-                //comd.Parameters.AddWithValue("@DVT", dvt_lkp.Text.Trim());
-                //comd.Parameters.AddWithValue("@GIAMUA", Convert.ToDouble(giamua_txt.Text.Trim()));
-                //comd.Parameters.AddWithValue("@SLTON", Convert.ToDouble(slton_txt.Text.Trim()));
-                //comd.ExecuteNonQuery();
+                OracleCommand comd = new OracleCommand(str, kketnoi.connect);
+                comd.Parameters.AddWithValue(":MAsp", mavt_txt.Text);
+                comd.Parameters.AddWithValue(":TENsp", tenvt_txt.Text);
+                comd.Parameters.AddWithValue(":Dsp", dvt_lkp.Text.Trim());
+                comd.Parameters.AddWithValue(":GIAMUA", Convert.ToDouble(giamua_txt.Text.Trim()));
+                comd.Parameters.AddWithValue(":SLTON", Convert.ToDouble(slton_txt.Text.Trim()));
+                comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
                 updatelist();
                 XtraMessageBox.Show("Sửa thành công");
@@ -235,22 +260,31 @@ namespace QLBH.Formsss
         {
             try
             {
-                k = false;
-                DataTable dt = vattu_gridcontrol.DataSource as DataTable;
-                if (dt == null) return;
-                DataRow[] rows = dt.Select("Chon=true");
-                if(rows.Count()>0)
-                    if (XtraMessageBox.Show("Bạn có muốn xóa những sản phẩm này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)        
-                        foreach (DataRow r in rows)
-                        {
-                            string maVT = r["MAVT"].ToString();
-                            Xoadl(maVT);
-                            k = true;
-                        }
-                if (k == true)
+                //k = false;
+                //DataTable dt = vattu_gridcontrol.DataSource as DataTable;
+                //if (dt == null) return;
+                //DataRow[] rows = dt.Select("Chon=true");
+                //if(rows.Count()>0)
+                //    if (XtraMessageBox.Show("Bạn có muốn xóa những sản phẩm này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)        
+                //        foreach (DataRow r in rows)
+                //        {
+                //            string masp = r["MAsp"].ToString();
+                //            Xoadl(masp);
+                //            k = true;
+                //        }
+                //if (k == true)
+                //{
+                //    updatelist();
+                //    XtraMessageBox.Show("Đã xóa");
+                //    lammoi();
+                //}
+                if (mavt_txt.Text.Trim() != "")
                 {
+                    if (XtraMessageBox.Show("Bạn có muốn xóa khách hàng này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        Xoadl(mavt_txt.Text.Trim());
+                    }
                     updatelist();
-                    XtraMessageBox.Show("Đã xóa");
                     lammoi();
                 }
             }
@@ -262,18 +296,18 @@ namespace QLBH.Formsss
 
         private void Xoadl(string ma)
         {
-                string str = "delete from vattu where MAVT=@MAVT";
+                string str = "delete from sanpham where MAsp=:MAsp";
                 kketnoi.ketnoiserver();
-                //comd = new SqlCommand(str, kketnoi.connect);
-                //comd.Parameters.AddWithValue("@MAVT", ma);
-                //comd.ExecuteNonQuery();
+                OracleCommand comd = new OracleCommand(str, kketnoi.connect);
+                comd.Parameters.AddWithValue(":MAsp", ma);
+                comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
 
         }
         private void VatTu_gridview_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            mavt_txt.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "MAVT").ToString().Trim();
-            tenvt_txt.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "TENVT").ToString();
+            mavt_txt.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "MASP").ToString().Trim();
+            tenvt_txt.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "TENSP").ToString();
             dvt_lkp.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "DVT").ToString();
             giamua_txt.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "GIAMUA").ToString();
             slton_txt.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "SLTON").ToString();
@@ -336,10 +370,10 @@ namespace QLBH.Formsss
         {
             if (mavt_txt.Text.Trim() != "")
             {
-                string sql = "select * from vattu where mavt = '" + mavt_txt.Text + "'";
+                string sql = "select * from sanpham where masp = '" + mavt_txt.Text + "'";
                 DataTable dttb = kketnoi.laydata(sql);
-                mavt_txt.Text = dttb.Rows[0]["MAVT"].ToString();
-                tenvt_txt.Text = dttb.Rows[0]["TENVT"].ToString();
+                mavt_txt.Text = dttb.Rows[0]["MASP"].ToString();
+                tenvt_txt.Text = dttb.Rows[0]["TENSP"].ToString();
                 dvt_lkp.Text = dttb.Rows[0]["DVT"].ToString();
                 giamua_txt.Text = dttb.Rows[0]["GIAMUA"].ToString();
                 slton_txt.Text = dttb.Rows[0]["SLTON"].ToString();
