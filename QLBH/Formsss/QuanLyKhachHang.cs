@@ -67,6 +67,14 @@ namespace QLBH.Formsss
                 ns = 1;
             else
                 ns = 0;
+            if(dienthoai_txt.Text.Trim()=="")
+                dienthoai = 1;
+            else
+                dienthoai = 0;
+            if (mail_txt.Text.Trim() == "")
+                mail = 1;
+            else
+                mail = 0;
         }
         bool loi;
         private void kiemtra()
@@ -79,17 +87,26 @@ namespace QLBH.Formsss
                 loi = true;
                 thongbao += "Bạn chưa nhập tên khách hàng!";
             }
-            //if (ns == 1)
-            //{
-            //    loi = true;
-            //    thongbao += "\nBạn chưa nhập ngày sinh khách hàng!";
-            //}
+            if (ns == 1)
+            {
+                loi = true;
+                thongbao += "\nBạn chưa nhập ngày sinh khách hàng!";
+            }
             if (diachi == 1)
             {
                 loi = true;
                 thongbao += "\nBạn chưa nhập địa chỉ khách hàng!";
             }
-            
+            if(dienthoai==1)
+            {
+                loi = true;
+                thongbao += "\nBạn chưa nhập điện thoại khách hàng!";
+            }
+            if (mail == 1)
+            {
+                loi = true;
+                thongbao += "\nBạn chưa nhập email khách hàng!";
+            }
             if(loi== true)
                 XtraMessageBox.Show(thongbao, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }

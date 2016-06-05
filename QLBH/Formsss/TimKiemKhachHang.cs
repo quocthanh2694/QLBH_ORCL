@@ -29,12 +29,12 @@ namespace QLBH.Formsss
         {
             try
             {
-                string str = "select MAKH,TENKH,NGAYSINH,DIACHI,DT,MAIL from khachhang where tenkh like '%" + tenkh_txt.Text + "%' and convert(varchar(20),NGAYSINH,103) like '%" + ngaysinh_txt.Text + "%' and diachi like '%" + diachi_txt.Text+ "%' and dt like '%" +dienthoai_txt.Text + "%' and mail like '%" + mail_txt.Text + "%'";
+                string str = "select MAKH,TENKH,NGAYSINH,DIACHI,DT,MAIL from khachhang where tenkh like '%" + tenkh_txt.Text + "%' and NGAYSINH like '%" + ngaysinh_txt.Text.Trim() + "%' and diachi like '%" + diachi_txt.Text+ "%' and dt like '%" +dienthoai_txt.Text + "%' and mail like '%" + mail_txt.Text + "%'";
                 gridControl1.DataSource= kketnoi.laydata(str);
             }
-            catch (Exception )
+            catch (Exception rex)
             {
-                
+                MessageBox.Show(rex.ToString());
             }
 
         }
