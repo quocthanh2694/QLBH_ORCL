@@ -100,9 +100,18 @@ namespace QLBH.Formsss
         }
         private void ghiten()
         {
+            string sql = "select tennv from dangnhap d,nhanvien v where d.manv=v.manv and  username='" + tendangnhaptxt.Text + "' and password='" + matkhautxt.Text + "'";
+            string ten = k.laydata_dong(sql);
+
+            string file1 = Application.StartupPath + "\\nameNV.txt";
+            StreamWriter s1 = new StreamWriter(file1);
+            s1.Write(ten);
+            s1.Close();
+
             string file = Application.StartupPath + "\\nas.txt";
             StreamWriter s = new StreamWriter(file);
             s.Write(tendangnhaptxt.Text);
+
             s.Close();
         }
         private void ketnoidatabase_Click_1(object sender, EventArgs e)

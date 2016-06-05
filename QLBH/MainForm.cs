@@ -123,6 +123,11 @@ namespace QLBH
                 sr.Close();
 
             }
+            //show name
+            string file1 = Application.StartupPath + "\\nameNV.txt";
+            StreamReader red1 = new StreamReader(file1);
+            string s1 = red1.ReadLine();
+            txtName.Caption = s1;
             //kiem tra quyen
 
             string file = Application.StartupPath + "\\nas.txt";

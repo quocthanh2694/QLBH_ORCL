@@ -81,8 +81,8 @@
             this.repositoryItemProgressBar2 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.repositoryItemProgressBar3 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.repositoryItemMarqueeProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar();
-            this.ribbonStatusBar2 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.ribbonStatusBar2 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.backstageViewTabItem1 = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.rgbiSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
@@ -90,6 +90,8 @@
             this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.barStaticItem7 = new DevExpress.XtraBars.BarStaticItem();
+            this.txtName = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar2)).BeginInit();
@@ -135,10 +137,12 @@
             this.tongdoanhthu_btn,
             this.quyen_txt,
             this.barStaticItem6,
-            this.luongnhanvien_btn});
+            this.luongnhanvien_btn,
+            this.barStaticItem7,
+            this.txtName});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 54;
+            this.ribbonControl1.MaxItemId = 58;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -150,7 +154,7 @@
             this.repositoryItemProgressBar3,
             this.repositoryItemMarqueeProgressBar1});
             this.ribbonControl1.Size = new System.Drawing.Size(1268, 142);
-            this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
+            this.ribbonControl1.StatusBar = this.ribbonStatusBar2;
             // 
             // logoutbutton
             // 
@@ -533,6 +537,15 @@
             // 
             this.repositoryItemMarqueeProgressBar1.Name = "repositoryItemMarqueeProgressBar1";
             // 
+            // ribbonStatusBar1
+            // 
+            this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem5);
+            this.ribbonStatusBar1.ItemLinks.Add(this.ngay_stbarStaticItem6_txt);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(1, 487);
+            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
+            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1262, 27);
+            // 
             // ribbonStatusBar2
             // 
             this.ribbonStatusBar2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -542,19 +555,12 @@
             this.ribbonStatusBar2.ItemLinks.Add(this.ngaystatusbar_txt);
             this.ribbonStatusBar2.ItemLinks.Add(this.barStaticItem6);
             this.ribbonStatusBar2.ItemLinks.Add(this.quyen_txt);
+            this.ribbonStatusBar2.ItemLinks.Add(this.barStaticItem7);
+            this.ribbonStatusBar2.ItemLinks.Add(this.txtName);
             this.ribbonStatusBar2.Location = new System.Drawing.Point(0, 632);
             this.ribbonStatusBar2.Name = "ribbonStatusBar2";
             this.ribbonStatusBar2.Ribbon = this.ribbonControl1;
             this.ribbonStatusBar2.Size = new System.Drawing.Size(1268, 27);
-            // 
-            // ribbonStatusBar1
-            // 
-            this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem5);
-            this.ribbonStatusBar1.ItemLinks.Add(this.ngay_stbarStaticItem6_txt);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(1, 487);
-            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
-            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1262, 27);
             // 
             // backstageViewTabItem1
             // 
@@ -609,6 +615,20 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(248, 23);
             this.progressBar1.TabIndex = 0;
+            // 
+            // barStaticItem7
+            // 
+            this.barStaticItem7.Caption = " Xin Chào: ";
+            this.barStaticItem7.Id = 56;
+            this.barStaticItem7.Name = "barStaticItem7";
+            this.barStaticItem7.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // txtName
+            // 
+            this.txtName.Caption = "Name";
+            this.txtName.Id = 57;
+            this.txtName.Name = "txtName";
+            this.txtName.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // MainForm
             // 
@@ -703,6 +723,8 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItem6;
         private DevExpress.XtraBars.BarButtonItem luongnhanvien_btn;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup luongnhanvien_group;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem7;
+        private DevExpress.XtraBars.BarStaticItem txtName;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager2;
     }
 }
