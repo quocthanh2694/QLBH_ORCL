@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
+using System.Data.OracleClient;
 
 namespace QLBH.Formsss
 {
     public partial class QuanLyKhachHang : DevExpress.XtraEditors.XtraForm
     {
         DataTable dtb = new DataTable();
+        OracleCommand comd=null;
         ketnoi kketnoi = new ketnoi();
         public QuanLyKhachHang()
         {
@@ -31,7 +33,7 @@ namespace QLBH.Formsss
         {
             try
             {
-                string str = "select *,cast(0 as bit) as Chon from khachhang";
+                string str = "select * from khachhang";
                 dtb = kketnoi.laydata(str);
                 khachhang_gridcontrol.DataSource = dtb;
             }
@@ -77,11 +79,11 @@ namespace QLBH.Formsss
                 loi = true;
                 thongbao += "Bạn chưa nhập tên khách hàng!";
             }
-            if (ns == 1)
-            {
-                loi = true;
-                thongbao += "\nBạn chưa nhập ngày sinh khách hàng!";
-            }
+            //if (ns == 1)
+            //{
+            //    loi = true;
+            //    thongbao += "\nBạn chưa nhập ngày sinh khách hàng!";
+            //}
             if (diachi == 1)
             {
                 loi = true;
@@ -110,16 +112,40 @@ namespace QLBH.Formsss
 
             if (XtraMessageBox.Show("Bạn có muốn thêm khách hàng này!", "Thông báo", MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string str = "insert into khachhang values(@makh,@tenkh,@diachi,@dt,@mail,@ns)";
+                string str = "insert into khachhang values(:makh,:tenkh,:diachi,:dt,:mail,:ns)";
+                // Kiem tra Ma so
+                bool kt = false;
+                string num = "0";
+                string count = kketnoi.laydata_dong("select count (makh) from khachhang");
+
+                if (count.Trim() == "")
+                    kt = true;
+                else
+                {
+                    num = kketnoi.laydata_dong("select max( SUBSTR(makh,3,2))+1 from khachhang ");
+                    kt = false;
+                }
+                
                 kketnoi.ketnoiserver();
-                //SqlCommand comd = new SqlCommand(str, kketnoi.connect);
-                //comd.Parameters.AddWithValue("@makh", "KH" + Convert.ToInt16(kketnoi.laydata_dong("if( select count(makh) from khachhang)>0 select max(substring(makh,3,2))+1 from KHACHHANG else select CAST ( 1 as int )")).ToString("00"));
-                //comd.Parameters.AddWithValue("@tenkh", tenkhachhang_txt.Text);
-                //comd.Parameters.AddWithValue("@diachi",diachi_txt.Text);
-                //comd.Parameters.AddWithValue("@dt", dienthoai_txt.Text);
-                //comd.Parameters.AddWithValue("@mail", mail_txt.Text);
-                //comd.Parameters.AddWithValue("@ns",Convert.ToDateTime(ngaysinh_dateEdit.Text));
-                //comd.ExecuteNonQuery();
+               
+                // Thực hiện command
+                comd = new OracleCommand(str, kketnoi.connect);
+                if (kt == true)
+                {
+                    comd.Parameters.Add(new OracleParameter("makh", "KH01"));
+                }
+                else
+                {
+                    comd.Parameters.Add(new OracleParameter("makh", "KH" + Convert.ToInt16(num).ToString("00")));
+                }
+                comd.Parameters.Add(new OracleParameter("tenkh", tenkhachhang_txt.Text));
+                comd.Parameters.Add(new OracleParameter("diachi", diachi_txt.Text.Trim()));
+                comd.Parameters.Add(new OracleParameter("dt", dienthoai_txt.Text.Trim()));
+                comd.Parameters.Add(new OracleParameter("mail", mail_txt.Text));
+                comd.Parameters.Add(new OracleParameter("ns", Convert.ToDateTime(ngaysinh_dateEdit.Text)));
+
+
+                comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
                 UpdateList();
                 XtraMessageBox.Show("Thêm thành công!");
@@ -149,16 +175,16 @@ namespace QLBH.Formsss
         {
             if (XtraMessageBox.Show("Bạn có muốn Sửa khách hàng này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string str = " update khachhang set TENKH=@tenkh,DIACHI=@diachi,DT=@dt,MAIL=@mail,NGAYSINH=@ns where MAKH=@makh";
+                string str = " update khachhang set TENKH=:tenkh,DIACHI=:diachi,DT=:dt,MAIL=:mail,NGAYSINH=:ns where MAKH=:makh";
                 kketnoi.ketnoiserver();
-                //SqlCommand comd = new SqlCommand(str, kketnoi.connect);
-                //comd.Parameters.AddWithValue("@makh", makh_txt.Text);
-                //comd.Parameters.AddWithValue("@tenkh", tenkhachhang_txt.Text);
-                //comd.Parameters.AddWithValue("@ns", Convert.ToDateTime(ngaysinh_dateEdit.Text));
-                //comd.Parameters.AddWithValue("@diachi", diachi_txt.Text);
-                //comd.Parameters.AddWithValue("@dt", dienthoai_txt.Text);
-                //comd.Parameters.AddWithValue("@mail", mail_txt.Text);
-                //comd.ExecuteNonQuery();
+                OracleCommand comd = new OracleCommand(str, kketnoi.connect);
+                comd.Parameters.AddWithValue(":makh", makh_txt.Text.Trim());
+                comd.Parameters.AddWithValue(":tenkh", tenkhachhang_txt.Text.Trim());
+                comd.Parameters.AddWithValue(":ns", Convert.ToDateTime(ngaysinh_dateEdit.Text));
+                comd.Parameters.AddWithValue(":diachi", diachi_txt.Text);
+                comd.Parameters.AddWithValue(":dt", dienthoai_txt.Text);
+                comd.Parameters.AddWithValue(":mail", mail_txt.Text);
+                comd.ExecuteNonQuery();
 
                 kketnoi.connect.Close();
                 UpdateList();
@@ -177,21 +203,30 @@ namespace QLBH.Formsss
         {
             try
             {
-                k = false;
-                DataTable dt = khachhang_gridcontrol.DataSource as DataTable;
-                if (dt == null) return;
-                DataRow[] rows = dt.Select("Chon=true");
-                if(rows.Count()>0)
-                    if (XtraMessageBox.Show("Bạn có muốn xóa khách hàng này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        foreach (DataRow r in rows)
-                        {
-                            string ma = r["MAKH"].ToString();
-                            xoadl(ma);
-                        }
-                if (k == true)
+                //k = false;
+                //DataTable dt = khachhang_gridcontrol.DataSource as DataTable;
+                //if (dt == null) return;
+                //DataRow[] rows = dt.Select("Chon=true");
+                //if(rows.Count()>0)
+                //    if (XtraMessageBox.Show("Bạn có muốn xóa khách hàng này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                //        foreach (DataRow r in rows)
+                //        {
+                //            string ma = r["MAKH"].ToString();
+                //            xoadl(ma);
+                //        }
+                //if (k == true)
+                //{
+                //    UpdateList();
+                //    XtraMessageBox.Show("Xóa thành công");
+                //    lammoi();
+                //}
+                if (makh_txt.Text.Trim() != "")
                 {
+                    if (XtraMessageBox.Show("Bạn có muốn xóa khách hàng này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        xoadl(makh_txt.Text.Trim());
+                    }
                     UpdateList();
-                    XtraMessageBox.Show("Xóa thành công");
                     lammoi();
                 }
                 
@@ -204,11 +239,11 @@ namespace QLBH.Formsss
 
         private void xoadl(string ma)
         {
-            string str = "delete from khachhang where MAKH=@makh";
+            string str = "delete from khachhang where MAKH=:makh";
             kketnoi.ketnoiserver();
-            //SqlCommand comd = new SqlCommand(str, kketnoi.connect);
-            //comd.Parameters.AddWithValue("@makh", ma);
-            //comd.ExecuteNonQuery();
+            OracleCommand comd = new OracleCommand(str, kketnoi.connect);
+            comd.Parameters.AddWithValue(":makh", ma);
+            comd.ExecuteNonQuery();
 
             kketnoi.connect.Close();
             k = true;
@@ -218,17 +253,17 @@ namespace QLBH.Formsss
         }
         private void kiemtrangaysinh(object sender, EventArgs e)
         {
-            if (ngaysinh_dateEdit.Text != "")
-            {
+            //if (ngaysinh_dateEdit.Text != "")
+            //{
 
-                string nam = ngaysinh_dateEdit.Text.Substring(6, 4);
-                if (Convert.ToInt16(nam) > DateTime.Now.Year)
-                {
-                    XtraMessageBox.Show("Nhập sai ngày sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    ngaysinh_dateEdit.Text = "";
-                    ngaysinh_dateEdit.Focus();
-                }
-            }
+            //    string nam = ngaysinh_dateEdit.Text.Substring(6, 4);
+            //    if (Convert.ToInt16(nam) > DateTime.Now.Year)
+            //    {
+            //        XtraMessageBox.Show("Nhập sai ngày sinh", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        ngaysinh_dateEdit.Text = "";
+            //        ngaysinh_dateEdit.Focus();
+            //    }
+            //}
         }
 
         public void GetValue(String str1)
