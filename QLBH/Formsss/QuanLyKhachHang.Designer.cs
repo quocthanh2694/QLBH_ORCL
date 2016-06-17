@@ -346,6 +346,7 @@
             this.gridColumn12});
             this.khachhang_gridvew.GridControl = this.khachhang_gridcontrol;
             this.khachhang_gridvew.Name = "khachhang_gridvew";
+            this.khachhang_gridvew.OptionsFind.AlwaysVisible = true;
             this.khachhang_gridvew.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.khachhang_gridvew_RowCellClick);
             // 
             // gridColumn6
@@ -441,6 +442,7 @@
             this.timkiem_btn.Size = new System.Drawing.Size(86, 37);
             this.timkiem_btn.TabIndex = 3;
             this.timkiem_btn.Text = "Tìm kiếm\r\n(Ctrl+F)";
+            this.timkiem_btn.Visible = false;
             this.timkiem_btn.Click += new System.EventHandler(this.timkiem_btn_Click);
             this.timkiem_btn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.simpleButton1_KeyUp);
             // 

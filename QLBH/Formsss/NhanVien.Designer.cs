@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhanVien));
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
+            this.txtpassword = new System.Windows.Forms.TextBox();
+            this.txtusername = new System.Windows.Forms.TextBox();
             this.chucvu_cbx = new System.Windows.Forms.ComboBox();
             this.luong_txt = new DevExpress.XtraEditors.TextEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -39,6 +41,8 @@
             this.manv_txt = new DevExpress.XtraEditors.TextEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -55,6 +59,8 @@
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.timkiem_btn = new DevExpress.XtraEditors.SimpleButton();
             this.Xoa_btn = new DevExpress.XtraEditors.SimpleButton();
@@ -79,6 +85,8 @@
             // panelControl5
             // 
             this.panelControl5.AllowTouchScroll = true;
+            this.panelControl5.Controls.Add(this.txtpassword);
+            this.panelControl5.Controls.Add(this.txtusername);
             this.panelControl5.Controls.Add(this.chucvu_cbx);
             this.panelControl5.Controls.Add(this.luong_txt);
             this.panelControl5.Controls.Add(this.simpleButton1);
@@ -88,6 +96,8 @@
             this.panelControl5.Controls.Add(this.manv_txt);
             this.panelControl5.Controls.Add(this.labelControl6);
             this.panelControl5.Controls.Add(this.labelControl5);
+            this.panelControl5.Controls.Add(this.labelControl9);
+            this.panelControl5.Controls.Add(this.labelControl8);
             this.panelControl5.Controls.Add(this.labelControl4);
             this.panelControl5.Controls.Add(this.labelControl3);
             this.panelControl5.Controls.Add(this.labelControl2);
@@ -98,6 +108,22 @@
             this.panelControl5.Size = new System.Drawing.Size(416, 410);
             this.panelControl5.TabIndex = 20;
             // 
+            // txtpassword
+            // 
+            this.txtpassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtpassword.Location = new System.Drawing.Point(176, 242);
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.Size = new System.Drawing.Size(152, 21);
+            this.txtpassword.TabIndex = 7;
+            // 
+            // txtusername
+            // 
+            this.txtusername.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtusername.Location = new System.Drawing.Point(176, 204);
+            this.txtusername.Name = "txtusername";
+            this.txtusername.Size = new System.Drawing.Size(152, 21);
+            this.txtusername.TabIndex = 7;
+            // 
             // chucvu_cbx
             // 
             this.chucvu_cbx.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -107,24 +133,24 @@
             this.chucvu_cbx.Items.AddRange(new object[] {
             "Quản lý",
             "Nhân viên"});
-            this.chucvu_cbx.Location = new System.Drawing.Point(176, 251);
+            this.chucvu_cbx.Location = new System.Drawing.Point(176, 277);
             this.chucvu_cbx.Name = "chucvu_cbx";
-            this.chucvu_cbx.Size = new System.Drawing.Size(112, 21);
+            this.chucvu_cbx.Size = new System.Drawing.Size(116, 21);
             this.chucvu_cbx.TabIndex = 4;
             // 
             // luong_txt
             // 
             this.luong_txt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.luong_txt.Location = new System.Drawing.Point(176, 296);
+            this.luong_txt.Location = new System.Drawing.Point(176, 322);
             this.luong_txt.Name = "luong_txt";
-            this.luong_txt.Size = new System.Drawing.Size(100, 20);
+            this.luong_txt.Size = new System.Drawing.Size(116, 20);
             this.luong_txt.TabIndex = 5;
             this.luong_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.luong_txt_KeyPress);
             // 
             // simpleButton1
             // 
             this.simpleButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.simpleButton1.Location = new System.Drawing.Point(312, 62);
+            this.simpleButton1.Location = new System.Drawing.Point(312, 56);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 6;
@@ -135,9 +161,9 @@
             // dienthoai_txt
             // 
             this.dienthoai_txt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dienthoai_txt.Location = new System.Drawing.Point(176, 203);
+            this.dienthoai_txt.Location = new System.Drawing.Point(176, 173);
             this.dienthoai_txt.Name = "dienthoai_txt";
-            this.dienthoai_txt.Size = new System.Drawing.Size(112, 20);
+            this.dienthoai_txt.Size = new System.Drawing.Size(152, 20);
             this.dienthoai_txt.TabIndex = 3;
             this.dienthoai_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dienthoai_txt_KeyPress_1);
             this.dienthoai_txt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dienthoai_txt_KeyUp);
@@ -146,9 +172,9 @@
             // diachi_txt
             // 
             this.diachi_txt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.diachi_txt.Location = new System.Drawing.Point(176, 157);
+            this.diachi_txt.Location = new System.Drawing.Point(176, 134);
             this.diachi_txt.Name = "diachi_txt";
-            this.diachi_txt.Size = new System.Drawing.Size(112, 20);
+            this.diachi_txt.Size = new System.Drawing.Size(152, 20);
             this.diachi_txt.TabIndex = 2;
             this.diachi_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ktra_enter_txt_ketpress);
             this.diachi_txt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dienthoai_txt_KeyUp);
@@ -156,7 +182,7 @@
             // tennv_txt
             // 
             this.tennv_txt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tennv_txt.Location = new System.Drawing.Point(176, 113);
+            this.tennv_txt.Location = new System.Drawing.Point(176, 98);
             this.tennv_txt.Name = "tennv_txt";
             this.tennv_txt.Size = new System.Drawing.Size(152, 20);
             this.tennv_txt.TabIndex = 1;
@@ -167,9 +193,9 @@
             // 
             this.manv_txt.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.manv_txt.Enabled = false;
-            this.manv_txt.Location = new System.Drawing.Point(176, 65);
+            this.manv_txt.Location = new System.Drawing.Point(176, 59);
             this.manv_txt.Name = "manv_txt";
-            this.manv_txt.Size = new System.Drawing.Size(65, 20);
+            this.manv_txt.Size = new System.Drawing.Size(87, 20);
             this.manv_txt.TabIndex = 0;
             this.manv_txt.TextChanged += new System.EventHandler(this.manv_txt_TextChanged);
             this.manv_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ktra_enter_txt_ketpress);
@@ -179,7 +205,7 @@
             // 
             this.labelControl6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.labelControl6.Location = new System.Drawing.Point(82, 300);
+            this.labelControl6.Location = new System.Drawing.Point(82, 326);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(35, 14);
             this.labelControl6.TabIndex = 0;
@@ -190,18 +216,40 @@
             this.labelControl5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.labelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl5.Location = new System.Drawing.Point(82, 255);
+            this.labelControl5.Location = new System.Drawing.Point(82, 281);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(45, 14);
             this.labelControl5.TabIndex = 0;
             this.labelControl5.Text = "Chức vụ";
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.labelControl9.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.labelControl9.Location = new System.Drawing.Point(82, 247);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(51, 14);
+            this.labelControl9.TabIndex = 0;
+            this.labelControl9.Text = "Password";
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.labelControl8.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.labelControl8.Location = new System.Drawing.Point(82, 211);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(55, 14);
+            this.labelControl8.TabIndex = 0;
+            this.labelControl8.Text = "UserName";
             // 
             // labelControl4
             // 
             this.labelControl4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.labelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl4.Location = new System.Drawing.Point(82, 205);
+            this.labelControl4.Location = new System.Drawing.Point(82, 175);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(55, 14);
             this.labelControl4.TabIndex = 0;
@@ -211,7 +259,7 @@
             // 
             this.labelControl3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.labelControl3.Location = new System.Drawing.Point(82, 159);
+            this.labelControl3.Location = new System.Drawing.Point(82, 136);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(35, 14);
             this.labelControl3.TabIndex = 0;
@@ -221,7 +269,7 @@
             // 
             this.labelControl2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.labelControl2.Location = new System.Drawing.Point(82, 115);
+            this.labelControl2.Location = new System.Drawing.Point(82, 100);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(42, 14);
             this.labelControl2.TabIndex = 0;
@@ -231,7 +279,7 @@
             // 
             this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.labelControl1.Location = new System.Drawing.Point(82, 68);
+            this.labelControl1.Location = new System.Drawing.Point(82, 62);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(35, 14);
             this.labelControl1.TabIndex = 0;
@@ -284,9 +332,12 @@
             this.gridColumn4,
             this.gridColumn1,
             this.gridColumn5,
-            this.gridColumn6});
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn8});
             this.nhanvien_gridview.GridControl = this.nhanvien_gridcontrol;
             this.nhanvien_gridview.Name = "nhanvien_gridview";
+            this.nhanvien_gridview.OptionsFind.AlwaysVisible = true;
             this.nhanvien_gridview.OptionsSelection.MultiSelect = true;
             this.nhanvien_gridview.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.nhanvien_gridview_RowCellClick);
             this.nhanvien_gridview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nhanvien_gridview_KeyDown);
@@ -366,6 +417,24 @@
             this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 123;
             // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Username";
+            this.gridColumn7.FieldName = "USERNAME";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 6;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Password";
+            this.gridColumn8.FieldName = "PASSWORD";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.timkiem_btn);
@@ -391,6 +460,7 @@
             this.timkiem_btn.TabIndex = 3;
             this.timkiem_btn.Tag = "";
             this.timkiem_btn.Text = "Tìm kiếm\r\n(Ctrl+F)\r\n";
+            this.timkiem_btn.Visible = false;
             this.timkiem_btn.Click += new System.EventHandler(this.timkiem_btn_Click);
             this.timkiem_btn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dienthoai_txt_KeyUp);
             // 
@@ -497,5 +567,11 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private System.Windows.Forms.TextBox txtpassword;
+        private System.Windows.Forms.TextBox txtusername;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
     }
 }

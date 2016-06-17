@@ -64,13 +64,18 @@
             this.quyen_txt = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItem6 = new DevExpress.XtraBars.BarStaticItem();
             this.luongnhanvien_btn = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItem7 = new DevExpress.XtraBars.BarStaticItem();
+            this.txtName = new DevExpress.XtraBars.BarStaticItem();
+            this.khuvucbtn = new DevExpress.XtraBars.BarButtonItem();
+            this.cuaHangBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.btnLoaiSP = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroupNhanvien = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupNhanvien = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.luongnhanvien_group = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -81,8 +86,8 @@
             this.repositoryItemProgressBar2 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.repositoryItemProgressBar3 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.repositoryItemMarqueeProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar();
-            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonStatusBar2 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.backstageViewTabItem1 = new DevExpress.XtraBars.Ribbon.BackstageViewTabItem();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.rgbiSkins = new DevExpress.XtraBars.RibbonGalleryBarItem();
@@ -90,8 +95,6 @@
             this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.barStaticItem7 = new DevExpress.XtraBars.BarStaticItem();
-            this.txtName = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar2)).BeginInit();
@@ -139,10 +142,13 @@
             this.barStaticItem6,
             this.luongnhanvien_btn,
             this.barStaticItem7,
-            this.txtName});
+            this.txtName,
+            this.khuvucbtn,
+            this.cuaHangBtn,
+            this.btnLoaiSP});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 58;
+            this.ribbonControl1.MaxItemId = 61;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -154,7 +160,7 @@
             this.repositoryItemProgressBar3,
             this.repositoryItemMarqueeProgressBar1});
             this.ribbonControl1.Size = new System.Drawing.Size(1268, 142);
-            this.ribbonControl1.StatusBar = this.ribbonStatusBar2;
+            this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // logoutbutton
             // 
@@ -249,6 +255,7 @@
             // nhanvien_btn
             // 
             this.nhanvien_btn.Caption = "Nhân viên";
+            this.nhanvien_btn.Enabled = false;
             this.nhanvien_btn.Glyph = ((System.Drawing.Image)(resources.GetObject("nhanvien_btn.Glyph")));
             this.nhanvien_btn.Id = 19;
             this.nhanvien_btn.LargeWidth = 110;
@@ -422,6 +429,47 @@
             this.luongnhanvien_btn.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.luongnhanvien_btn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.luongnhanvien_btn_ItemClick);
             // 
+            // barStaticItem7
+            // 
+            this.barStaticItem7.Caption = " Xin Chào: ";
+            this.barStaticItem7.Id = 56;
+            this.barStaticItem7.Name = "barStaticItem7";
+            this.barStaticItem7.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // txtName
+            // 
+            this.txtName.Caption = "Name";
+            this.txtName.Id = 57;
+            this.txtName.Name = "txtName";
+            this.txtName.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // khuvucbtn
+            // 
+            this.khuvucbtn.Caption = "QL Khu Vực";
+            this.khuvucbtn.Glyph = ((System.Drawing.Image)(resources.GetObject("khuvucbtn.Glyph")));
+            this.khuvucbtn.Id = 58;
+            this.khuvucbtn.Name = "khuvucbtn";
+            this.khuvucbtn.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.khuvucbtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick_2);
+            // 
+            // cuaHangBtn
+            // 
+            this.cuaHangBtn.Caption = "QL Cửa hàng";
+            this.cuaHangBtn.Glyph = ((System.Drawing.Image)(resources.GetObject("cuaHangBtn.Glyph")));
+            this.cuaHangBtn.Id = 59;
+            this.cuaHangBtn.Name = "cuaHangBtn";
+            this.cuaHangBtn.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.cuaHangBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
+            // 
+            // btnLoaiSP
+            // 
+            this.btnLoaiSP.Caption = "Loại Sản phẩm";
+            this.btnLoaiSP.Glyph = ((System.Drawing.Image)(resources.GetObject("btnLoaiSP.Glyph")));
+            this.btnLoaiSP.Id = 60;
+            this.btnLoaiSP.Name = "btnLoaiSP";
+            this.btnLoaiSP.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnLoaiSP.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLoaiSP_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -453,26 +501,28 @@
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroupNhanvien,
             this.ribbonPageGroup2,
+            this.ribbonPageGroupNhanvien,
             this.ribbonPageGroup5});
             this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "Quản lý ";
-            // 
-            // ribbonPageGroupNhanvien
-            // 
-            this.ribbonPageGroupNhanvien.ItemLinks.Add(this.nhanvien_btn);
-            this.ribbonPageGroupNhanvien.Name = "ribbonPageGroupNhanvien";
-            this.ribbonPageGroupNhanvien.Text = "Quản lý Nhân viên";
-            this.ribbonPageGroupNhanvien.Visible = false;
+            this.ribbonPage2.Text = "Quản lý";
             // 
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.AllowTextClipping = false;
-            this.ribbonPageGroup2.ItemLinks.Add(this.quanlyKhachhang_btn);
+            this.ribbonPageGroup2.ItemLinks.Add(this.khuvucbtn);
+            this.ribbonPageGroup2.ItemLinks.Add(this.cuaHangBtn);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnLoaiSP);
             this.ribbonPageGroup2.ItemLinks.Add(this.QLSanPham_button);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "Quản lý";
+            this.ribbonPageGroup2.Text = "Thông tin cơ bản";
+            // 
+            // ribbonPageGroupNhanvien
+            // 
+            this.ribbonPageGroupNhanvien.ItemLinks.Add(this.nhanvien_btn);
+            this.ribbonPageGroupNhanvien.ItemLinks.Add(this.quanlyKhachhang_btn);
+            this.ribbonPageGroupNhanvien.Name = "ribbonPageGroupNhanvien";
+            this.ribbonPageGroupNhanvien.Text = "Đối tượng ngoài";
             // 
             // ribbonPageGroup5
             // 
@@ -480,7 +530,7 @@
             this.ribbonPageGroup5.ItemLinks.Add(this.hoadon_btn);
             this.ribbonPageGroup5.ItemLinks.Add(this.chitiethd_btn);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            this.ribbonPageGroup5.Text = "Hóa đơn";
+            this.ribbonPageGroup5.Text = "Xử lý";
             // 
             // ribbonPage3
             // 
@@ -537,15 +587,6 @@
             // 
             this.repositoryItemMarqueeProgressBar1.Name = "repositoryItemMarqueeProgressBar1";
             // 
-            // ribbonStatusBar1
-            // 
-            this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem5);
-            this.ribbonStatusBar1.ItemLinks.Add(this.ngay_stbarStaticItem6_txt);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(1, 487);
-            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
-            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1262, 27);
-            // 
             // ribbonStatusBar2
             // 
             this.ribbonStatusBar2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -561,6 +602,15 @@
             this.ribbonStatusBar2.Name = "ribbonStatusBar2";
             this.ribbonStatusBar2.Ribbon = this.ribbonControl1;
             this.ribbonStatusBar2.Size = new System.Drawing.Size(1268, 27);
+            // 
+            // ribbonStatusBar1
+            // 
+            this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem5);
+            this.ribbonStatusBar1.ItemLinks.Add(this.ngay_stbarStaticItem6_txt);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(1, 487);
+            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
+            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1262, 27);
             // 
             // backstageViewTabItem1
             // 
@@ -615,20 +665,6 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(248, 23);
             this.progressBar1.TabIndex = 0;
-            // 
-            // barStaticItem7
-            // 
-            this.barStaticItem7.Caption = " Xin Chào: ";
-            this.barStaticItem7.Id = 56;
-            this.barStaticItem7.Name = "barStaticItem7";
-            this.barStaticItem7.TextAlignment = System.Drawing.StringAlignment.Near;
-            // 
-            // txtName
-            // 
-            this.txtName.Caption = "Name";
-            this.txtName.Id = 57;
-            this.txtName.Name = "txtName";
-            this.txtName.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // MainForm
             // 
@@ -725,6 +761,9 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup luongnhanvien_group;
         private DevExpress.XtraBars.BarStaticItem barStaticItem7;
         private DevExpress.XtraBars.BarStaticItem txtName;
+        private DevExpress.XtraBars.BarButtonItem khuvucbtn;
+        private DevExpress.XtraBars.BarButtonItem cuaHangBtn;
+        private DevExpress.XtraBars.BarButtonItem btnLoaiSP;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager2;
     }
 }

@@ -135,7 +135,7 @@ namespace QLBH
             string s=red.ReadLine();
             if (s.Trim().ToUpper() == "ADMIN")
             { 
-                ribbonPageGroupNhanvien.Visible = true;
+                nhanvien_btn.Enabled = true;
                 luongnhanvien_group.Visible = true;
             }
             red.Close();
@@ -250,6 +250,24 @@ namespace QLBH
             Formsss.LuongNhanVien luong = new Formsss.LuongNhanVien();
             TapCreating(xtraTabControl1, luongnhanvien_btn.Caption, luong);
            
+        }
+
+        private void barButtonItem4_ItemClick_2(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Formsss.QLKV kv = new Formsss.QLKV();
+            TapCreating(xtraTabControl1, khuvucbtn.Caption, kv);
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Formsss.QLCH ch = new Formsss.QLCH();
+            TapCreating(xtraTabControl1, cuaHangBtn.Caption, ch);
+        }
+
+        private void btnLoaiSP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Formsss.QLLoai ch = new Formsss.QLLoai();
+            TapCreating(xtraTabControl1, btnLoaiSP.Caption, ch);
         }
     }
 }

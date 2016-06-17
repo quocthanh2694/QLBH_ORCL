@@ -1,6 +1,6 @@
 ﻿namespace QLBH.Formsss
 {
-    partial class QuanLySanPhamFrom
+    partial class QLLoai
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLySanPhamFrom));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QLLoai));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.timkiem_btn = new DevExpress.XtraEditors.SimpleButton();
             this.Xoa_btn = new DevExpress.XtraEditors.SimpleButton();
             this.Sua_btn = new DevExpress.XtraEditors.SimpleButton();
             this.Them_btn = new DevExpress.XtraEditors.SimpleButton();
@@ -40,31 +39,16 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.vattu_gridcontrol = new DevExpress.XtraGrid.GridControl();
             this.vattu_gridview = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.girdcolumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCheck = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.panel = new DevExpress.XtraEditors.PanelControl();
-            this.txtmacuahang = new DevExpress.XtraEditors.LookUpEdit();
-            this.txtmaloai = new DevExpress.XtraEditors.LookUpEdit();
-            this.txttensp = new System.Windows.Forms.TextBox();
-            this.txtmasp = new System.Windows.Forms.TextBox();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.slton_txt = new DevExpress.XtraEditors.TextEdit();
-            this.giamua_txt = new DevExpress.XtraEditors.TextEdit();
-            this.dvt_lkp = new System.Windows.Forms.ComboBox();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.txtTenLoai = new DevExpress.XtraEditors.TextEdit();
+            this.txtmaloai = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
@@ -78,10 +62,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panel)).BeginInit();
             this.panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtmacuahang.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenLoai.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtmaloai.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.slton_txt.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.giamua_txt.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -104,7 +86,6 @@
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.timkiem_btn);
             this.panelControl2.Controls.Add(this.Xoa_btn);
             this.panelControl2.Controls.Add(this.Sua_btn);
             this.panelControl2.Controls.Add(this.Them_btn);
@@ -113,19 +94,6 @@
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1264, 107);
             this.panelControl2.TabIndex = 7;
-            // 
-            // timkiem_btn
-            // 
-            this.timkiem_btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.timkiem_btn.Image = ((System.Drawing.Image)(resources.GetObject("timkiem_btn.Image")));
-            this.timkiem_btn.Location = new System.Drawing.Point(789, 43);
-            this.timkiem_btn.Name = "timkiem_btn";
-            this.timkiem_btn.Size = new System.Drawing.Size(86, 37);
-            this.timkiem_btn.TabIndex = 3;
-            this.timkiem_btn.Text = "Tìm kiếm\r\n(Ctrl+F)";
-            this.timkiem_btn.Visible = false;
-            this.timkiem_btn.Click += new System.EventHandler(this.timkiem_btn_Click);
-            this.timkiem_btn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.timkiem_btn_KeyUp);
             // 
             // Xoa_btn
             // 
@@ -181,9 +149,10 @@
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Times New Roman", 20F);
             this.labelControl7.Location = new System.Drawing.Point(285, 20);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(197, 31);
+            this.labelControl7.Size = new System.Drawing.Size(245, 31);
             this.labelControl7.TabIndex = 2;
-            this.labelControl7.Text = "Quản lý sản phẩm";
+            this.labelControl7.Text = "Quản lý loại sản phẩm";
+            this.labelControl7.Click += new System.EventHandler(this.labelControl7_Click);
             // 
             // vattu_gridcontrol
             // 
@@ -203,14 +172,9 @@
             // vattu_gridview
             // 
             this.vattu_gridview.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.girdcolumn1,
-            this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn4,
-            this.gridColumn5,
-            this.colCheck,
             this.gridColumn1,
-            this.gridColumn6});
+            this.gridColumn2,
+            this.colCheck});
             this.vattu_gridview.GridControl = this.vattu_gridcontrol;
             this.vattu_gridview.Name = "vattu_gridview";
             this.vattu_gridview.OptionsFind.AlwaysVisible = true;
@@ -218,55 +182,24 @@
             this.vattu_gridview.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.VatTu_gridview_RowCellClick);
             this.vattu_gridview.KeyDown += new System.Windows.Forms.KeyEventHandler(this.vattu_gridview_KeyDown);
             // 
-            // girdcolumn1
+            // gridColumn1
             // 
-            this.girdcolumn1.Caption = "Mã sản phẩm";
-            this.girdcolumn1.FieldName = "MASP";
-            this.girdcolumn1.Name = "girdcolumn1";
-            this.girdcolumn1.OptionsColumn.AllowEdit = false;
-            this.girdcolumn1.Visible = true;
-            this.girdcolumn1.VisibleIndex = 0;
-            this.girdcolumn1.Width = 78;
+            this.gridColumn1.Caption = "Mã loại";
+            this.gridColumn1.FieldName = "MALOAI";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "Tên sản phẩm";
-            this.gridColumn2.FieldName = "TENSP";
+            this.gridColumn2.Caption = "Tên loại";
+            this.gridColumn2.FieldName = "TENLOAI";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 110;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "Đơn vị tính";
-            this.gridColumn3.FieldName = "DVT";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.OptionsColumn.AllowEdit = false;
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 110;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Giá mua";
-            this.gridColumn4.FieldName = "GIAMUA";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.OptionsColumn.AllowEdit = false;
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 110;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "Số lượng tồn";
-            this.gridColumn5.FieldName = "SLTON";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.OptionsColumn.AllowEdit = false;
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 143;
             // 
             // colCheck
             // 
@@ -282,24 +215,6 @@
             this.repositoryItemCheckEdit2.Caption = "Check";
             this.repositoryItemCheckEdit2.Name = "repositoryItemCheckEdit2";
             // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Mã CH";
-            this.gridColumn1.FieldName = "MACH";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.OptionsColumn.AllowEdit = false;
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 5;
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "Mã loại";
-            this.gridColumn6.FieldName = "MALOAI";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.OptionsColumn.AllowEdit = false;
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 6;
-            // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
@@ -311,69 +226,21 @@
             // panel
             // 
             this.panel.AllowTouchScroll = true;
-            this.panel.Controls.Add(this.txtmacuahang);
-            this.panel.Controls.Add(this.txtmaloai);
-            this.panel.Controls.Add(this.txttensp);
-            this.panel.Controls.Add(this.txtmasp);
             this.panel.Controls.Add(this.simpleButton1);
-            this.panel.Controls.Add(this.slton_txt);
-            this.panel.Controls.Add(this.giamua_txt);
-            this.panel.Controls.Add(this.dvt_lkp);
-            this.panel.Controls.Add(this.labelControl8);
-            this.panel.Controls.Add(this.labelControl6);
-            this.panel.Controls.Add(this.labelControl5);
+            this.panel.Controls.Add(this.txtTenLoai);
+            this.panel.Controls.Add(this.txtmaloai);
             this.panel.Controls.Add(this.labelControl1);
-            this.panel.Controls.Add(this.labelControl4);
-            this.panel.Controls.Add(this.labelControl3);
             this.panel.Controls.Add(this.labelControl2);
             this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel.Location = new System.Drawing.Point(831, 0);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(433, 406);
-            this.panel.TabIndex = 1;
-            // 
-            // txtmacuahang
-            // 
-            this.txtmacuahang.Location = new System.Drawing.Point(190, 333);
-            this.txtmacuahang.Name = "txtmacuahang";
-            this.txtmacuahang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtmacuahang.Properties.NullText = "";
-            this.txtmacuahang.Size = new System.Drawing.Size(144, 20);
-            this.txtmacuahang.TabIndex = 6;
-            // 
-            // txtmaloai
-            // 
-            this.txtmaloai.Location = new System.Drawing.Point(190, 294);
-            this.txtmaloai.Name = "txtmaloai";
-            this.txtmaloai.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtmaloai.Properties.NullText = "";
-            this.txtmaloai.Size = new System.Drawing.Size(144, 20);
-            this.txtmaloai.TabIndex = 5;
-            // 
-            // txttensp
-            // 
-            this.txttensp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txttensp.Location = new System.Drawing.Point(190, 128);
-            this.txttensp.Name = "txttensp";
-            this.txttensp.Size = new System.Drawing.Size(144, 21);
-            this.txttensp.TabIndex = 1;
-            // 
-            // txtmasp
-            // 
-            this.txtmasp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtmasp.Enabled = false;
-            this.txtmasp.Location = new System.Drawing.Point(190, 82);
-            this.txtmasp.Name = "txtmasp";
-            this.txtmasp.Size = new System.Drawing.Size(100, 21);
-            this.txtmasp.TabIndex = 0;
-            this.txtmasp.TextChanged += new System.EventHandler(this.mavt_txt_TextChanged);
+            this.panel.TabIndex = 9;
             // 
             // simpleButton1
             // 
             this.simpleButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.simpleButton1.Location = new System.Drawing.Point(334, 83);
+            this.simpleButton1.Location = new System.Drawing.Point(333, 126);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 5;
@@ -381,120 +248,49 @@
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             this.simpleButton1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.timkiem_btn_KeyUp);
             // 
-            // slton_txt
+            // txtTenLoai
             // 
-            this.slton_txt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.slton_txt.Location = new System.Drawing.Point(190, 256);
-            this.slton_txt.Name = "slton_txt";
-            this.slton_txt.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.slton_txt.Size = new System.Drawing.Size(100, 20);
-            this.slton_txt.TabIndex = 4;
-            this.slton_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slton_txt_KeyDown);
-            this.slton_txt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.timkiem_btn_KeyUp);
-            this.slton_txt.Validated += new System.EventHandler(this.kiemtraslton);
+            this.txtTenLoai.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtTenLoai.Location = new System.Drawing.Point(189, 175);
+            this.txtTenLoai.Name = "txtTenLoai";
+            this.txtTenLoai.Size = new System.Drawing.Size(166, 20);
+            this.txtTenLoai.TabIndex = 1;
+            this.txtTenLoai.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slton_txt_KeyDown);
+            this.txtTenLoai.KeyUp += new System.Windows.Forms.KeyEventHandler(this.timkiem_btn_KeyUp);
             // 
-            // giamua_txt
+            // txtmaloai
             // 
-            this.giamua_txt.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.giamua_txt.Location = new System.Drawing.Point(190, 213);
-            this.giamua_txt.Name = "giamua_txt";
-            this.giamua_txt.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.giamua_txt.Size = new System.Drawing.Size(100, 20);
-            this.giamua_txt.TabIndex = 3;
-            this.giamua_txt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slton_txt_KeyDown);
-            this.giamua_txt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.timkiem_btn_KeyUp);
-            this.giamua_txt.Validated += new System.EventHandler(this.kiemtragiamua);
-            // 
-            // dvt_lkp
-            // 
-            this.dvt_lkp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dvt_lkp.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.dvt_lkp.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.dvt_lkp.FormattingEnabled = true;
-            this.dvt_lkp.Items.AddRange(new object[] {
-            "Viên",
-            "Cái",
-            "Khối",
-            "Bao",
-            "Kg"});
-            this.dvt_lkp.Location = new System.Drawing.Point(190, 169);
-            this.dvt_lkp.Name = "dvt_lkp";
-            this.dvt_lkp.Size = new System.Drawing.Size(100, 21);
-            this.dvt_lkp.TabIndex = 2;
-            this.dvt_lkp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slton_txt_KeyDown);
-            this.dvt_lkp.KeyUp += new System.Windows.Forms.KeyEventHandler(this.timkiem_btn_KeyUp);
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.labelControl8.Location = new System.Drawing.Point(37, 335);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(85, 18);
-            this.labelControl8.TabIndex = 10;
-            this.labelControl8.Text = "Mã của hàng";
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.labelControl6.Location = new System.Drawing.Point(37, 296);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(45, 18);
-            this.labelControl6.TabIndex = 10;
-            this.labelControl6.Text = "Mã loại";
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.labelControl5.Location = new System.Drawing.Point(37, 255);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(82, 18);
-            this.labelControl5.TabIndex = 10;
-            this.labelControl5.Text = "Số lượng tồn";
+            this.txtmaloai.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtmaloai.Enabled = false;
+            this.txtmaloai.Location = new System.Drawing.Point(189, 129);
+            this.txtmaloai.Name = "txtmaloai";
+            this.txtmaloai.Size = new System.Drawing.Size(95, 20);
+            this.txtmaloai.TabIndex = 0;
+            this.txtmaloai.TextChanged += new System.EventHandler(this.mavt_txt_TextChanged);
+            this.txtmaloai.KeyDown += new System.Windows.Forms.KeyEventHandler(this.slton_txt_KeyDown);
+            this.txtmaloai.KeyUp += new System.Windows.Forms.KeyEventHandler(this.timkiem_btn_KeyUp);
             // 
             // labelControl1
             // 
             this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.labelControl1.Location = new System.Drawing.Point(37, 85);
+            this.labelControl1.Location = new System.Drawing.Point(36, 128);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(90, 18);
+            this.labelControl1.Size = new System.Drawing.Size(45, 18);
             this.labelControl1.TabIndex = 14;
-            this.labelControl1.Text = "Mã sản phẩm";
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.labelControl4.Location = new System.Drawing.Point(37, 212);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(54, 18);
-            this.labelControl4.TabIndex = 11;
-            this.labelControl4.Text = "Giá mua";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.labelControl3.Location = new System.Drawing.Point(37, 172);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(69, 18);
-            this.labelControl3.TabIndex = 12;
-            this.labelControl3.Text = "Đơn vị tính";
+            this.labelControl1.Text = "Mã loại";
             // 
             // labelControl2
             // 
             this.labelControl2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.labelControl2.Location = new System.Drawing.Point(37, 131);
+            this.labelControl2.Location = new System.Drawing.Point(36, 174);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(96, 18);
+            this.labelControl2.Size = new System.Drawing.Size(51, 18);
             this.labelControl2.TabIndex = 13;
-            this.labelControl2.Text = "Tên sản phẩm";
+            this.labelControl2.Text = "Tên loại";
             // 
-            // QuanLySanPhamFrom
+            // QLLoai
             // 
             this.AcceptButton = this.Them_btn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,7 +302,7 @@
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.panelControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "QuanLySanPhamFrom";
+            this.Name = "QLLoai";
             this.Text = "Quản_lý_sản_phẩm";
             this.Load += new System.EventHandler(this.QuanLySanPhamFrom_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -523,10 +319,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panel)).EndInit();
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtmacuahang.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenLoai.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtmaloai.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.slton_txt.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.giamua_txt.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -539,39 +333,21 @@
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.PanelControl panel;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.SimpleButton Xoa_btn;
         private DevExpress.XtraEditors.SimpleButton Sua_btn;
         private DevExpress.XtraEditors.SimpleButton Them_btn;
-        private DevExpress.XtraEditors.SimpleButton timkiem_btn;
-        private System.Windows.Forms.ComboBox dvt_lkp;
-        private DevExpress.XtraEditors.TextEdit tenvt_txt;
-        private DevExpress.XtraEditors.TextEdit mavt_txt;
-        private DevExpress.XtraEditors.TextEdit slton_txt;
-        private DevExpress.XtraEditors.TextEdit giamua_txt;
+        private DevExpress.XtraEditors.TextEdit txtTenLoai;
+        private DevExpress.XtraEditors.TextEdit txtmaloai;
         private DevExpress.XtraGrid.GridControl vattu_gridcontrol;
         private DevExpress.XtraGrid.Views.Grid.GridView vattu_gridview;
-        private DevExpress.XtraGrid.Columns.GridColumn girdcolumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn colCheck;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
-        private System.Windows.Forms.TextBox txttensp;
-        private System.Windows.Forms.TextBox txtmasp;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.LookUpEdit txtmacuahang;
-        private DevExpress.XtraEditors.LookUpEdit txtmaloai;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
     }
 }

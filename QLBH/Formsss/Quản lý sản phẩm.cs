@@ -28,7 +28,22 @@ namespace QLBH.Formsss
         private void QuanLySanPhamFrom_Load(object sender, EventArgs e)
         {
             updatelist();
-            tenvt_txt.Focus();
+            txttensp.Focus();
+            layLookupEdit();
+        }
+        void layLookupEdit()
+        {
+            dtb = kketnoi.laydata("select MALOAI,TENLOAI from LOAISp ");
+            txtmaloai.Properties.DataSource = dtb;
+            txtmaloai.Properties.DisplayMember = "MALOAI";
+            txtmaloai.Properties.ValueMember = "MALOAI";
+
+
+            dtb = kketnoi.laydata("select MACH,TENCH from CUAHANG ");
+            txtmacuahang.Properties.DataSource = dtb;
+            txtmacuahang.Properties.DisplayMember = "MACH";
+            txtmacuahang.Properties.ValueMember = "MACH";
+
         }
         private void updatelist()
         {
@@ -38,32 +53,36 @@ namespace QLBH.Formsss
         }
         public void lammoi()
         {
-            tenvt_txt.Text="";
-            mavt_txt.Text = "";
+            txttensp.Text="";
+            txtmasp.Text = "";
             dvt_lkp.Text = "";
             giamua_txt.Text = "";
             slton_txt.Text = "";
+            txtmacuahang.EditValue = null;
+            txtmacuahang.ClosePopup();
+            txtmaloai.EditValue = null;
+            txtmaloai.ClosePopup();
         }
       
         //Các hàm kiểm tra
-        public int kiemtratrungten()
-        {
-            for (int i = 0; i < vattu_gridview.RowCount; i++)
-            {
-                if (dtb.Rows[i][1].ToString().ToUpper() == tenvt_txt.Text.ToUpper())// & dtb.Rows[i][0].ToString().ToUpper() != mavt_txt.Text.ToUpper())
-                {
-                    r = 1;
-                    break;
-                }
-                else
-                    r = 0;
-            }
-            return r;
-        }
+        //public int kiemtratrungten()
+        //{
+        //    //for (int i = 0; i < vattu_gridview.RowCount; i++)
+        //    //{
+        //    //    if (dtb.Rows[i][1].ToString().ToUpper() == txttensp.Text.ToUpper())// & dtb.Rows[i][0].ToString().ToUpper() != mavt_txt.Text.ToUpper())
+        //    //    {
+        //    //        r = 1;
+        //    //        break;
+        //    //    }
+        //    //    else
+        //    //        r = 0;
+        //    //}
+        //    //return r;
+        //}
         public int ktt=0,kt = 0, kts = 0,ktdsp1=0;
         public int ktrten()
         {
-            if (tenvt_txt.Text== "")
+            if (txttensp.Text== "")
                 ktt = 1;
             else
                 ktt = 0;
@@ -105,11 +124,11 @@ namespace QLBH.Formsss
                 thongbao =thongbao+ "Vui lòng nhập tên Vật tư! ";
             }
 
-            if (kiemtratrungten() == 1) 
-            {
-                loi = true;
-                thongbao =thongbao + "\n Vật tư này đã có! ";
-            }
+            //if (kiemtratrungten() == 1) 
+            //{
+            //    loi = true;
+            //    thongbao =thongbao + "\n Vật tư này đã có! ";
+            //}
             if (ktdsp() == 1)
             {
                 loi = true;
@@ -153,7 +172,7 @@ namespace QLBH.Formsss
         {
             if (XtraMessageBox.Show("Bạn có muốn thêm sản phẩm này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string str = "insert into sanpham values(:MAsp,:TENsp,:Dvt,:GIAMUA,:SLTON)";
+                string str = "insert into sanpham values(:MAsp,:TENsp,:Dvt,:GIAMUA,:SLTON,:maloai,:mach)";
                 // Kiem tra Ma so
                 bool kt = false;
                 string num = "0";
@@ -172,7 +191,7 @@ namespace QLBH.Formsss
                 OracleCommand comd = new OracleCommand(str, kketnoi.connect);
                 if (kt == true)
                 {
-                    comd.Parameters.Add(new OracleParameter("MAsp", "KH01"));
+                    comd.Parameters.Add(new OracleParameter("MAsp", "SP01"));
                 }
                 else
                 {
@@ -181,10 +200,12 @@ namespace QLBH.Formsss
 
                 //comd = new SqlCommand(str, kketnoi.connect);
                 //comd.Parameters.AddWithValue(":MAsp", "sp" + Convert.ToInt16((kketnoi.laydata_dong("if( select count (masp) from vattu )>0 select max( SUBSTRING(masp,3,2))+1 from vattu else select cast (1 as int)"))).ToString("00"));
-                comd.Parameters.AddWithValue(":TENsp", tenvt_txt.Text.Trim());
+                comd.Parameters.AddWithValue(":TENsp", txttensp.Text.Trim());
                 comd.Parameters.AddWithValue(":Dvt", dvt_lkp.Text.Trim());
                 comd.Parameters.AddWithValue(":GIAMUA", Convert.ToDouble(giamua_txt.Text.Trim()));
                 comd.Parameters.AddWithValue(":SLTON", Convert.ToDouble(slton_txt.Text.Trim()));
+                comd.Parameters.AddWithValue(":maloai", txtmaloai.Text);
+                comd.Parameters.AddWithValue(":mach", txtmacuahang.Text);
                 comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
                 updatelist();
@@ -192,7 +213,7 @@ namespace QLBH.Formsss
                 lammoi();
             }
             else
-                tenvt_txt.Focus();
+                txttensp.Focus();
         }
 
         bool ktsuasp;
@@ -201,7 +222,7 @@ namespace QLBH.Formsss
             ktsuasp = false;
             for (int i = 0; i < vattu_gridview.RowCount; i++)
             {
-                if (dtb.Rows[i][1].ToString().ToUpper() == tenvt_txt.Text.ToUpper() & dtb.Rows[i][0].ToString().ToUpper() != mavt_txt.Text.ToUpper())
+                if (dtb.Rows[i][1].ToString().ToUpper() == txttensp.Text.ToUpper() & dtb.Rows[i][0].ToString().ToUpper() != txtmasp.Text.ToUpper())
                 {
                    ktsuasp=true;
                 }
@@ -214,7 +235,7 @@ namespace QLBH.Formsss
         {
             try
             {
-                if (mavt_txt.Text == "")
+                if (txtmasp.Text == "")
                 {
                     XtraMessageBox.Show("Vui lòng chọn sản phẩm!");
                 }
@@ -238,8 +259,8 @@ namespace QLBH.Formsss
                 string str = "update sanpham set TENsp=:TENsp,Dvt=:Dsp,GIAMUA=:GIAMUA,SLTON=:SLTON where MAsp=:MAsp";
                 kketnoi.ketnoiserver();
                 OracleCommand comd = new OracleCommand(str, kketnoi.connect);
-                comd.Parameters.AddWithValue(":MAsp", mavt_txt.Text);
-                comd.Parameters.AddWithValue(":TENsp", tenvt_txt.Text);
+                comd.Parameters.AddWithValue(":MAsp", txtmasp.Text);
+                comd.Parameters.AddWithValue(":TENsp", txttensp.Text);
                 comd.Parameters.AddWithValue(":Dsp", dvt_lkp.Text.Trim());
                 comd.Parameters.AddWithValue(":GIAMUA", Convert.ToDouble(giamua_txt.Text.Trim()));
                 comd.Parameters.AddWithValue(":SLTON", Convert.ToDouble(slton_txt.Text.Trim()));
@@ -252,7 +273,7 @@ namespace QLBH.Formsss
             }
             else
             {
-                tenvt_txt.Focus();
+                txttensp.Focus();
             }
         }
         bool k;
@@ -278,11 +299,11 @@ namespace QLBH.Formsss
                 //    XtraMessageBox.Show("Đã xóa");
                 //    lammoi();
                 //}
-                if (mavt_txt.Text.Trim() != "")
+                if (txtmasp.Text.Trim() != "")
                 {
-                    if (XtraMessageBox.Show("Bạn có muốn xóa khách hàng này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (XtraMessageBox.Show("Bạn có muốn xóa sản phẩm này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        Xoadl(mavt_txt.Text.Trim());
+                        Xoadl(txtmasp.Text.Trim());
                     }
                     updatelist();
                     lammoi();
@@ -306,11 +327,15 @@ namespace QLBH.Formsss
         }
         private void VatTu_gridview_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            mavt_txt.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "MASP").ToString().Trim();
-            tenvt_txt.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "TENSP").ToString();
+            txtmasp.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "MASP").ToString().Trim();
+            txttensp.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "TENSP").ToString();
             dvt_lkp.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "DVT").ToString();
             giamua_txt.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "GIAMUA").ToString();
             slton_txt.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "SLTON").ToString();
+            txtmaloai.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "MALOAI").ToString();
+            txtmaloai.ClosePopup();
+            txtmacuahang.Text = vattu_gridview.GetRowCellValue(e.RowHandle, "MACH").ToString();
+            txtmacuahang.ClosePopup();
             
             
         }
@@ -353,7 +378,7 @@ namespace QLBH.Formsss
 
         public void GetValue(String str1)
         {
-            mavt_txt.Text  = str1;
+            txtmasp.Text  = str1;
         }
         private void timkiem_btn_Click(object sender, EventArgs e)
         {
@@ -368,12 +393,12 @@ namespace QLBH.Formsss
 
         private void mavt_txt_TextChanged(object sender, EventArgs e)
         {
-            if (mavt_txt.Text.Trim() != "")
+            if (txtmasp.Text.Trim() != "")
             {
-                string sql = "select * from sanpham where masp = '" + mavt_txt.Text + "'";
+                string sql = "select * from sanpham where masp = '" + txtmasp.Text + "'";
                 DataTable dttb = kketnoi.laydata(sql);
-                mavt_txt.Text = dttb.Rows[0]["MASP"].ToString();
-                tenvt_txt.Text = dttb.Rows[0]["TENSP"].ToString();
+                txtmasp.Text = dttb.Rows[0]["MASP"].ToString();
+                txttensp.Text = dttb.Rows[0]["TENSP"].ToString();
                 dvt_lkp.Text = dttb.Rows[0]["DVT"].ToString();
                 giamua_txt.Text = dttb.Rows[0]["GIAMUA"].ToString();
                 slton_txt.Text = dttb.Rows[0]["SLTON"].ToString();

@@ -22,13 +22,13 @@ namespace QLBH.Formsss
         ketnoi kketnoi = new ketnoi();
         OracleCommand comd = new OracleCommand();
         DataTable dtb = new DataTable();
-         int  ten,diachi,dienthoai;
-         bool loi;
-         string thongbao;
+        int ten, diachi, dienthoai;
+        bool loi;
+        string thongbao;
         private void kiemtra()
         {
             if (tennv_txt.Text == "")
-                ten = 1;            
+                ten = 1;
             else
                 ten = 0;
             if (diachi_txt.Text == "")
@@ -43,9 +43,9 @@ namespace QLBH.Formsss
             thongbao = "";
             loi = false;
             if (ten == 1)
-            { 
+            {
                 loi = true;
-                thongbao+="Bạn chưa nhập tên nhân viên";
+                thongbao += "Bạn chưa nhập tên nhân viên";
             }
             if (diachi == 1)
             {
@@ -63,11 +63,22 @@ namespace QLBH.Formsss
                 loi = true;
                 thongbao += "\nBạn chưa chọn chức vụ nhân viên";
             }
-            if (luong_txt.Text =="")
+            if (luong_txt.Text == "")
             {
                 luong_txt.Text = "0";
             }
-            if(loi==true)
+            if (txtusername.Text.Trim() == "")
+            {
+                loi = true;
+                thongbao += "\nBạn chưa nhập username";
+            }
+            if (txtpassword.Text.Trim() == "")
+            {
+                loi = true;
+                thongbao += "\nBạn chưa nhập password";
+            }
+
+            if (loi == true)
                 XtraMessageBox.Show(thongbao, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void kiemtradt()
@@ -89,7 +100,7 @@ namespace QLBH.Formsss
             {
                 kiemtra();
                 kiemtradt();
-                if(loi==false)
+                if (loi == false)
                     nhapdl();
             }
             catch (Exception ex)
@@ -137,6 +148,30 @@ namespace QLBH.Formsss
 
                 comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
+
+                //luu thong tin dang nhap
+                try
+                {
+                     str = "insert into dangnhap values(:username,:password,:manv)";
+                     kketnoi.ketnoiserver();
+                     comd = new OracleCommand(str, kketnoi.connect);
+                     comd.Parameters.Add(new OracleParameter("username", txtusername.Text.Trim()));
+                     comd.Parameters.Add(new OracleParameter("password", txtpassword.Text));
+                     if (kt == true)
+                     {
+                         comd.Parameters.Add(new OracleParameter("manv", "NV01"));
+                     }
+                     else
+                     {
+                         comd.Parameters.Add(new OracleParameter("manv", "NV" + Convert.ToInt16(num).ToString("00")));
+                     }
+
+                     comd.ExecuteNonQuery();
+                     kketnoi.connect.Close();
+                }
+                catch(Exception ex){
+                    MessageBox.Show(ex.ToString());
+                }
                 updatelist();
                 XtraMessageBox.Show("Thêm thành công");
                 lammoi();
@@ -147,17 +182,19 @@ namespace QLBH.Formsss
         }
         private void updatelist()
         {
-            dtb = kketnoi.laydata("select * from nhanvien");
+            dtb = kketnoi.laydata("select v.manv,tennv,diachi,dt,chucvu,luong,username,password from nhanvien v, dangnhap d where d.manv=v.manv");
             nhanvien_gridcontrol.DataSource = dtb;
         }
         private void lammoi()
         {
-            manv_txt.Text="";
-            tennv_txt.Text="";
-            diachi_txt.Text="";
-            dienthoai_txt.Text="";
+            manv_txt.Text = "";
+            tennv_txt.Text = "";
+            diachi_txt.Text = "";
+            dienthoai_txt.Text = "";
             luong_txt.Text = "";
             chucvu_cbx.Text = "";
+            txtpassword.Text = "";
+            txtusername.Text = "";
         }
 
         private void Sua_btn_Click(object sender, EventArgs e)
@@ -170,8 +207,8 @@ namespace QLBH.Formsss
                 }
                 else
                 {
-                     int len = dienthoai_txt.Text.ToString().Length;
-                     if (len != 0)
+                    int len = dienthoai_txt.Text.ToString().Length;
+                    if (len != 0)
                         if (len < 9 | len > 11)
                         {
                             XtraMessageBox.Show("Sai số điện thoại");
@@ -202,6 +239,28 @@ namespace QLBH.Formsss
 
                 comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
+
+
+                
+                //sửa đăng nhập
+                try
+                {
+                    str = "update dangnhap set password=:password where MANV=:MANV";
+                    kketnoi.ketnoiserver();
+                    comd = new OracleCommand(str, kketnoi.connect);
+                    comd.Parameters.AddWithValue("MANV", manv_txt.Text.Trim());
+                    comd.Parameters.AddWithValue("password", txtpassword.Text);
+                    comd.ExecuteNonQuery();
+                    kketnoi.connect.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+
+                
+
+
                 updatelist();
                 XtraMessageBox.Show("Sửa thành công");
 
@@ -212,7 +271,7 @@ namespace QLBH.Formsss
                 tennv_txt.Focus();
             }
         }
-        public bool k ;
+        public bool k;
         private void Xoa_btn_Click(object sender, EventArgs e)
         {
             try
@@ -228,14 +287,14 @@ namespace QLBH.Formsss
                 //        {
                 //            string manv = r["MANV"].ToString();
                 //            xoadl(manv);
-                    
+
                 //        }
                 //if (k == true)
                 //{
                 //    updatelist();
                 //    XtraMessageBox.Show("Đã xóa");
                 //    lammoi();
-                    
+
                 //}
 
                 if (manv_txt.Text.Trim() != "")
@@ -249,26 +308,34 @@ namespace QLBH.Formsss
                 }
 
             }
-            catch (Exception )
+            catch (Exception)
             {
-                XtraMessageBox.Show("Nhân viên đã chọn tồn tại trong danh sách hóa đơn","Lỗi",MessageBoxButtons.OK,MessageBoxIcon.Error);//Không thể xóa" + ex.ToString());
+                XtraMessageBox.Show("Nhân viên đã chọn tồn tại trong danh sách hóa đơn", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);//Không thể xóa" + ex.ToString());
             }
         }
 
         private void xoadl(string ma)
-        {          
-                string str = "delete from nhanvien where MANV=:MANV";
-                kketnoi.ketnoiserver();
-                comd = new OracleCommand(str, kketnoi.connect);
-                comd.Parameters.Add(new OracleParameter("MANV", ma));
-                comd.ExecuteNonQuery();
-                kketnoi.connect.Close();
-                 
-            
+        {
+            string str = "delete from dangnhap where MANV=:MANV";
+            kketnoi.ketnoiserver();
+            comd = new OracleCommand(str, kketnoi.connect);
+            comd.Parameters.Add(new OracleParameter("MANV", ma));
+            comd.ExecuteNonQuery();
+            kketnoi.connect.Close();
+
+
+             str = "delete from nhanvien where MANV=:MANV";
+            kketnoi.ketnoiserver();
+            comd = new OracleCommand(str, kketnoi.connect);
+            comd.Parameters.Add(new OracleParameter("MANV", ma));
+            comd.ExecuteNonQuery();
+            kketnoi.connect.Close();
+
+
         }
         public void GetValue(String str1)
         {
-            manv_txt.Text  = str1;
+            manv_txt.Text = str1;
         }
         private void timkiem_btn_Click(object sender, EventArgs e)
         {
@@ -276,7 +343,7 @@ namespace QLBH.Formsss
             TimKiemNhanVien tim = new TimKiemNhanVien();
             tim.getdata = new TimKiemNhanVien.Getstring(GetValue);
             tim.ShowDialog();
-            
+
         }
 
         private void nhanvien_gridview_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -287,6 +354,8 @@ namespace QLBH.Formsss
             dienthoai_txt.Text = nhanvien_gridview.GetRowCellValue(e.RowHandle, "DT").ToString().Trim();
             chucvu_cbx.Text = nhanvien_gridview.GetRowCellValue(e.RowHandle, "CHUCVU").ToString();
             luong_txt.Text = nhanvien_gridview.GetRowCellValue(e.RowHandle, "LUONG").ToString();
+            txtusername.Text = nhanvien_gridview.GetRowCellValue(e.RowHandle, "USERNAME").ToString();
+            txtpassword.Text = nhanvien_gridview.GetRowCellValue(e.RowHandle, "PASSWORD").ToString();
         }
 
         private void nhanvien_gridview_KeyDown(object sender, KeyEventArgs e)
@@ -302,10 +371,10 @@ namespace QLBH.Formsss
 
         private void dienthoai_txt_Validated(object sender, EventArgs e)
         {
-           // kiemtradt();
+            // kiemtradt();
         }
 
-      
+
 
         private void dienthoai_txt_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -317,17 +386,17 @@ namespace QLBH.Formsss
 
         private void ktra_enter_txt_ketpress(object sender, KeyPressEventArgs e)
         {
-           
+
             if (e.KeyChar == 13)
                 Them_btn.PerformClick();
         }
 
         private void manv_txt_TextChanged(object sender, EventArgs e)
         {
-            
+
             if (manv_txt.Text.ToString() != "")
-            { 
-                string sql = "select* from nhanvien where manv like  '"+manv_txt.Text+"'";
+            {
+                string sql = "select* from nhanvien where manv like  '" + manv_txt.Text + "'";
                 DataTable dttb = kketnoi.laydata(sql);
                 if (dttb.Rows.Count == 0)
                     return;

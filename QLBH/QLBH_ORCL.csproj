@@ -145,11 +145,29 @@
     <Compile Include="Formsss\DShoaDon.Designer.cs">
       <DependentUpon>DShoaDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formsss\QLCH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formsss\QLCH.Designer.cs">
+      <DependentUpon>QLCH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formsss\QLLoai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formsss\QLLoai.Designer.cs">
+      <DependentUpon>QLLoai.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formsss\QuanLyKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formsss\QuanLyKhachHang.Designer.cs">
       <DependentUpon>QuanLyKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formsss\QLKV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formsss\QLKV.Designer.cs">
+      <DependentUpon>QLKV.cs</DependentUpon>
     </Compile>
     <Compile Include="Formsss\SLSPDaBan.cs">
       <SubType>Form</SubType>
@@ -277,8 +295,17 @@
     <EmbeddedResource Include="Formsss\DShoaDon.resx">
       <DependentUpon>DShoaDon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formsss\QLCH.resx">
+      <DependentUpon>QLCH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formsss\QLLoai.resx">
+      <DependentUpon>QLLoai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formsss\QuanLyKhachHang.resx">
       <DependentUpon>QuanLyKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formsss\QLKV.resx">
+      <DependentUpon>QLKV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formsss\SLSPDaBan.resx">
       <DependentUpon>SLSPDaBan.cs</DependentUpon>
