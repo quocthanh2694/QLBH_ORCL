@@ -105,7 +105,7 @@ namespace QLBH.Formsss
 
             string file1 = Application.StartupPath + "\\nameNV.txt";
             StreamWriter s1 = new StreamWriter(file1);
-            s1.Write(tendangnhaptxt.Text);
+            s1.Write(ten);
             s1.Close();
 
             string file = Application.StartupPath + "\\nas.txt";

@@ -30,7 +30,7 @@ namespace QLBH.Formsss
             mahd_txt.ClosePopup();
             lammoi();
             clear.Focus();
-            updatelist();
+            updatelistCTHD();
         }
 
         private void lammoi()
@@ -47,15 +47,15 @@ namespace QLBH.Formsss
             stt_txt.Text = "";
         }
 
-        private void updatelist()
+        private void updatelistCTHD()
         {
-            dtb = kketnoi.laydata("select STT,MAHD,c.MAVT,TENVT,SL,KHUYENMAI=case when KHUYENMAI =0.1  then '10' when KHUYENMAI=0.05 then '5' else 0 end,GIABAN,cast(0 as bit) as Chon from cthd c,vattu v where c.mavt=v.mavt");
+            dtb = kketnoi.laydata("select MAHD,c.MAsp,TENsp,SL,case when KHUYENMAI =0.1  then 10 when KHUYENMAI=0.05 then 5 else 0 end as KhuyenMai,GIABAN from cthd c,sanpham v where c.masp=v.masp");
             chitiethd_gridcontrol.DataSource = dtb;
         }
         private void ChiTietHoaDon_Load(object sender, EventArgs e)
         {
             laymahd_mavt();
-            updatelist();
+            updatelistCTHD();
             clear.Focus();
         }
         private void laymahd_mavt()

@@ -167,8 +167,8 @@ namespace QLBH
         private void chitiethd_btn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
-            Formsss.ChiTietHoaDon cthoadon = new Formsss.ChiTietHoaDon();
-            TapCreating(xtraTabControl1, chitiethd_btn.Caption, cthoadon);
+            //Formsss.ChiTietHoaDon cthoadon = new Formsss.ChiTietHoaDon();
+            //TapCreating(xtraTabControl1, chitiethd_btn.Caption, cthoadon);
           
         
         }

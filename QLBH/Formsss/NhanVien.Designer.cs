@@ -145,6 +145,7 @@
             this.luong_txt.Name = "luong_txt";
             this.luong_txt.Size = new System.Drawing.Size(116, 20);
             this.luong_txt.TabIndex = 5;
+            this.luong_txt.Visible = false;
             this.luong_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.luong_txt_KeyPress);
             // 
             // simpleButton1
@@ -210,6 +211,7 @@
             this.labelControl6.Size = new System.Drawing.Size(35, 14);
             this.labelControl6.TabIndex = 0;
             this.labelControl6.Text = "Lương";
+            this.labelControl6.Visible = false;
             // 
             // labelControl5
             // 
@@ -413,27 +415,25 @@
             this.gridColumn6.FieldName = "LUONG";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.OptionsColumn.AllowEdit = false;
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
             this.gridColumn6.Width = 123;
             // 
             // gridColumn7
             // 
-            this.gridColumn7.Caption = "Username";
+            this.gridColumn7.Caption = "Tài khoản";
             this.gridColumn7.FieldName = "USERNAME";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 5;
             // 
             // gridColumn8
             // 
-            this.gridColumn8.Caption = "Password";
+            this.gridColumn8.Caption = "Mật khẩu";
             this.gridColumn8.FieldName = "PASSWORD";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 6;
             // 
             // panelControl2
             // 

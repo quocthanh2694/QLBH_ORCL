@@ -64,21 +64,21 @@ namespace QLBH.Formsss
             txtmaloai.ClosePopup();
         }
       
-        //Các hàm kiểm tra
-        //public int kiemtratrungten()
-        //{
-        //    //for (int i = 0; i < vattu_gridview.RowCount; i++)
-        //    //{
-        //    //    if (dtb.Rows[i][1].ToString().ToUpper() == txttensp.Text.ToUpper())// & dtb.Rows[i][0].ToString().ToUpper() != mavt_txt.Text.ToUpper())
-        //    //    {
-        //    //        r = 1;
-        //    //        break;
-        //    //    }
-        //    //    else
-        //    //        r = 0;
-        //    //}
-        //    //return r;
-        //}
+       // Các hàm kiểm tra
+        public int kiemtratrungten()
+        {
+            for (int i = 0; i < vattu_gridview.RowCount; i++)
+            {
+                if (dtb.Rows[i][1].ToString().ToUpper() == txttensp.Text.ToUpper())// & dtb.Rows[i][0].ToString().ToUpper() != mavt_txt.Text.ToUpper())
+                {
+                    r = 1;
+                    break;
+                }
+                else
+                    r = 0;
+            }
+            return r;
+        }
         public int ktt=0,kt = 0, kts = 0,ktdsp1=0;
         public int ktrten()
         {
@@ -124,11 +124,11 @@ namespace QLBH.Formsss
                 thongbao =thongbao+ "Vui lòng nhập tên Vật tư! ";
             }
 
-            //if (kiemtratrungten() == 1) 
-            //{
-            //    loi = true;
-            //    thongbao =thongbao + "\n Vật tư này đã có! ";
-            //}
+            if (kiemtratrungten() == 1)
+            {
+                loi = true;
+                thongbao = thongbao + "\n Sản phẩm này đã có! ";
+            }
             if (ktdsp() == 1)
             {
                 loi = true;

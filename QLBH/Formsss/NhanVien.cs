@@ -105,7 +105,8 @@ namespace QLBH.Formsss
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show(ex.ToString());
+                XtraMessageBox.Show("Tài khoản này đã tồn tại");//ex.ToString());
+                txtusername.Focus();
             }
         }
         private void nhapdl()
@@ -150,8 +151,7 @@ namespace QLBH.Formsss
                 kketnoi.connect.Close();
 
                 //luu thong tin dang nhap
-                try
-                {
+                
                      str = "insert into dangnhap values(:username,:password,:manv)";
                      kketnoi.ketnoiserver();
                      comd = new OracleCommand(str, kketnoi.connect);
@@ -168,10 +168,7 @@ namespace QLBH.Formsss
 
                      comd.ExecuteNonQuery();
                      kketnoi.connect.Close();
-                }
-                catch(Exception ex){
-                    MessageBox.Show(ex.ToString());
-                }
+                
                 updatelist();
                 XtraMessageBox.Show("Thêm thành công");
                 lammoi();
