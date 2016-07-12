@@ -33,14 +33,15 @@ namespace QLBH.Formsss
         }
         void layLookupEdit()
         {
-            dtb = kketnoi.laydata("select MALOAI,TENLOAI from LOAISp ");
-            txtmaloai.Properties.DataSource = dtb;
+            DataTable dt = new DataTable();
+            dt = kketnoi.laydata("select MALOAI,TENLOAI from LOAISp ");
+            txtmaloai.Properties.DataSource = dt;
             txtmaloai.Properties.DisplayMember = "MALOAI";
             txtmaloai.Properties.ValueMember = "MALOAI";
 
 
-            dtb = kketnoi.laydata("select MACH,TENCH from CUAHANG ");
-            txtmacuahang.Properties.DataSource = dtb;
+            dt = kketnoi.laydata("select MACH,TENCH from CUAHANG ");
+            txtmacuahang.Properties.DataSource = dt;
             txtmacuahang.Properties.DisplayMember = "MACH";
             txtmacuahang.Properties.ValueMember = "MACH";
 
@@ -69,7 +70,7 @@ namespace QLBH.Formsss
         {
             for (int i = 0; i < vattu_gridview.RowCount; i++)
             {
-                if (dtb.Rows[i][1].ToString().ToUpper() == txttensp.Text.ToUpper())// & dtb.Rows[i][0].ToString().ToUpper() != mavt_txt.Text.ToUpper())
+                if (dtb.Rows[i]["TENSP"].ToString().ToUpper() == txttensp.Text.ToUpper())// & dtb.Rows[i][0].ToString().ToUpper() != mavt_txt.Text.ToUpper())
                 {
                     r = 1;
                     break;
@@ -191,11 +192,11 @@ namespace QLBH.Formsss
                 OracleCommand comd = new OracleCommand(str, kketnoi.connect);
                 if (kt == true)
                 {
-                    comd.Parameters.Add(new OracleParameter("MAsp", "SP01"));
+                    comd.Parameters.Add(new OracleParameter("MAsp", "VT01"));
                 }
                 else
                 {
-                    comd.Parameters.Add(new OracleParameter("MAsp", "SP" + Convert.ToInt16(num).ToString("00")));
+                    comd.Parameters.Add(new OracleParameter("MAsp", "VT" + Convert.ToInt16(num).ToString("00")));
                 }
 
                 //comd = new SqlCommand(str, kketnoi.connect);
@@ -256,7 +257,7 @@ namespace QLBH.Formsss
         {
             if (XtraMessageBox.Show("Bạn có muốn sửa sản phẩm này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                string str = "update sanpham set TENsp=:TENsp,Dvt=:Dsp,GIAMUA=:GIAMUA,SLTON=:SLTON where MAsp=:MAsp";
+                string str = "update sanpham set TENsp=:TENsp,Dvt=:Dsp,GIAMUA=:GIAMUA,SLTON=:SLTON,maloai=:maloai,mach=:mach where MAsp=:MAsp";
                 kketnoi.ketnoiserver();
                 OracleCommand comd = new OracleCommand(str, kketnoi.connect);
                 comd.Parameters.AddWithValue(":MAsp", txtmasp.Text);
@@ -264,6 +265,8 @@ namespace QLBH.Formsss
                 comd.Parameters.AddWithValue(":Dsp", dvt_lkp.Text.Trim());
                 comd.Parameters.AddWithValue(":GIAMUA", Convert.ToDouble(giamua_txt.Text.Trim()));
                 comd.Parameters.AddWithValue(":SLTON", Convert.ToDouble(slton_txt.Text.Trim()));
+                comd.Parameters.AddWithValue(":maloai", txtmaloai.Text);
+                comd.Parameters.AddWithValue(":mach", txtmacuahang.Text);
                 comd.ExecuteNonQuery();
                 kketnoi.connect.Close();
                 updatelist();

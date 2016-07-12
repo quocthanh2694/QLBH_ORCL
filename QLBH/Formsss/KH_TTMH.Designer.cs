@@ -1,6 +1,6 @@
 ﻿namespace QLBH.Formsss
 {
-    partial class KhachHangVip
+    partial class KH_TTMH
     {
         /// <summary>
         /// Required designer variable.
@@ -41,11 +41,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Times New Roman", 20F);
-            this.labelControl7.Location = new System.Drawing.Point(519, 28);
+            this.labelControl7.Location = new System.Drawing.Point(363, 22);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(294, 31);
+            this.labelControl7.Size = new System.Drawing.Size(493, 31);
             this.labelControl7.TabIndex = 5;
-            this.labelControl7.Text = "Danh sách khách hàng VIP";
+            this.labelControl7.Text = "Danh sách khách hàng và thông tin mua hàng";
             // 
             // khachhangvip_gridcontrol
             // 
@@ -68,7 +68,7 @@
             this.khachhangvip_gridview.OptionsBehavior.ReadOnly = true;
             this.khachhangvip_gridview.OptionsFind.AlwaysVisible = true;
             // 
-            // KhachHangVip
+            // KH_TTMH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -76,7 +76,7 @@
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.khachhangvip_gridcontrol);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "KhachHangVip";
+            this.Name = "KH_TTMH";
             this.Text = "KhachHangVip";
             this.Load += new System.EventHandler(this.KhachHangVip_Load);
             ((System.ComponentModel.ISupportInitialize)(this.khachhangvip_gridcontrol)).EndInit();

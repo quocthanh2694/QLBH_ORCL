@@ -34,10 +34,9 @@
             this.thang_txt = new System.Windows.Forms.ComboBox();
             this.thang_lb = new DevExpress.XtraEditors.LabelControl();
             this.nam_lb = new DevExpress.XtraEditors.LabelControl();
-            this.nam_txt = new DevExpress.XtraEditors.LookUpEdit();
+            this.nam_txt = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.doanhthu_txt.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nam_txt.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // doanhthu_txt
@@ -128,37 +127,32 @@
             // 
             // nam_txt
             // 
-            this.nam_txt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.nam_txt.Location = new System.Drawing.Point(676, 27);
+            this.nam_txt.FormattingEnabled = true;
+            this.nam_txt.Location = new System.Drawing.Point(672, 28);
             this.nam_txt.Name = "nam_txt";
-            this.nam_txt.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.nam_txt.Properties.NullText = "";
-            this.nam_txt.Size = new System.Drawing.Size(83, 20);
-            this.nam_txt.TabIndex = 4;
+            this.nam_txt.Size = new System.Drawing.Size(64, 21);
+            this.nam_txt.TabIndex = 6;
             this.nam_txt.Visible = false;
-            this.nam_txt.TextChanged += new System.EventHandler(this.nam_txt_TextChanged);
-            this.nam_txt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.nam_txt_KeyPress);
+            this.nam_txt.TextChanged += new System.EventHandler(this.nam_txt_TextChanged_1);
             // 
             // TongDoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1252, 478);
+            this.Controls.Add(this.nam_txt);
             this.Controls.Add(this.thang_txt);
             this.Controls.Add(this.chartControl1);
             this.Controls.Add(this.nam_lb);
             this.Controls.Add(this.thang_lb);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.doanhthu_txt);
-            this.Controls.Add(this.nam_txt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TongDoanhThu";
             this.Text = "TongDoanhThu";
             this.Load += new System.EventHandler(this.TongDoanhThu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.doanhthu_txt.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nam_txt.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,6 +166,6 @@
         private System.Windows.Forms.ComboBox thang_txt;
         private DevExpress.XtraEditors.LabelControl thang_lb;
         private DevExpress.XtraEditors.LabelControl nam_lb;
-        private DevExpress.XtraEditors.LookUpEdit nam_txt;
+        private System.Windows.Forms.ComboBox nam_txt;
     }
 }

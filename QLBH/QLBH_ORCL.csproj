@@ -121,6 +121,12 @@
     <Compile Include="Formsss\In.Designer.cs">
       <DependentUpon>In.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formsss\KH_TTMH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formsss\KH_TTMH.Designer.cs">
+      <DependentUpon>KH_TTMH.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formsss\KhachHangVip.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formsss\In.resx">
       <DependentUpon>In.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formsss\KH_TTMH.resx">
+      <DependentUpon>KH_TTMH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formsss\KhachHangVip.resx">
       <DependentUpon>KhachHangVip.cs</DependentUpon>

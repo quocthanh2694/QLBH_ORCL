@@ -152,7 +152,7 @@ namespace QLBH.Formsss
 
                 //luu thong tin dang nhap
                 
-                     str = "insert into dangnhap values(:username,:password,:manv)";
+                     str = "insert into taikhoan values(:username,:password,:manv)";
                      kketnoi.ketnoiserver();
                      comd = new OracleCommand(str, kketnoi.connect);
                      comd.Parameters.Add(new OracleParameter("username", txtusername.Text.Trim()));
@@ -179,7 +179,7 @@ namespace QLBH.Formsss
         }
         private void updatelist()
         {
-            dtb = kketnoi.laydata("select v.manv,tennv,diachi,dt,chucvu,luong,username,password from nhanvien v, dangnhap d where d.manv=v.manv");
+            dtb = kketnoi.laydata("select v.manv,tennv,diachi,dt,chucvu,luong,username,password from nhanvien v, taikhoan d where d.manv=v.manv");
             nhanvien_gridcontrol.DataSource = dtb;
         }
         private void lammoi()
@@ -242,7 +242,7 @@ namespace QLBH.Formsss
                 //sửa đăng nhập
                 try
                 {
-                    str = "update dangnhap set password=:password where MANV=:MANV";
+                    str = "update taikhoan set password=:password where MANV=:MANV";
                     kketnoi.ketnoiserver();
                     comd = new OracleCommand(str, kketnoi.connect);
                     comd.Parameters.AddWithValue("MANV", manv_txt.Text.Trim());
@@ -313,7 +313,7 @@ namespace QLBH.Formsss
 
         private void xoadl(string ma)
         {
-            string str = "delete from dangnhap where MANV=:MANV";
+            string str = "delete from taikhoan where MANV=:MANV";
             kketnoi.ketnoiserver();
             comd = new OracleCommand(str, kketnoi.connect);
             comd.Parameters.Add(new OracleParameter("MANV", ma));

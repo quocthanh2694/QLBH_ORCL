@@ -269,5 +269,11 @@ namespace QLBH
             Formsss.QLLoai ch = new Formsss.QLLoai();
             TapCreating(xtraTabControl1, btnLoaiSP.Caption, ch);
         }
+
+        private void barButtonItem4_ItemClick_3(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Formsss.KH_TTMH akh = new Formsss.KH_TTMH();
+            TapCreating(xtraTabControl1, btn_KH_TTMH.Caption, akh);
+        }
     }
 }

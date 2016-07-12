@@ -60,7 +60,7 @@ namespace QLBH.Formsss
                 DataTable dtb = new DataTable();
                 try
                 {
-                    string stri = "select username,password from dangnhap where username='" + tendangnhaptxt.Text + "' and password='" + matkhautxt.Text + "'";
+                    string stri = "select username,password from taikhoan where username='" + tendangnhaptxt.Text + "' and password='" + matkhautxt.Text + "'";
                     dtb = k.laydata(stri);
                     ktketnoi = true;
                     splashScreenManager1.CloseWaitForm();
@@ -100,7 +100,7 @@ namespace QLBH.Formsss
         }
         private void ghiten()
         {
-            string sql = "select tennv from dangnhap d,nhanvien v where d.manv=v.manv and  username='" + tendangnhaptxt.Text + "' and password='" + matkhautxt.Text + "'";
+            string sql = "select tennv from taikhoan d,nhanvien v where d.manv=v.manv and  username='" + tendangnhaptxt.Text + "' and password='" + matkhautxt.Text + "'";
             string ten = k.laydata_dong(sql);
 
             string file1 = Application.StartupPath + "\\nameNV.txt";
@@ -160,7 +160,7 @@ namespace QLBH.Formsss
                      StreamReader file = new StreamReader(fileName);
                      string s = file.ReadLine().ToString().Trim();
                    
-                     string r = "select username,password from DangNhap where username='"+s+"'";
+                     string r = "select username,password from taikhoan where username='"+s+"'";
                      nhoTenDangNhapCheck.Checked = true;
                      t = k.laydata(r);
                      tendangnhaptxt.Text = t.Rows[0][0].ToString();
@@ -171,7 +171,7 @@ namespace QLBH.Formsss
                      StreamReader file = new StreamReader(fileName);
                      string s = file.ReadLine().ToString().Trim();
 
-                     string r = "select username,password from DangNhap where username='"+s+"'";
+                     string r = "select username,password from taikhoan where username='"+s+"'";
                      NhoMatKhauCheck.Checked = true;
                      t = k.laydata(r);
                      matkhautxt.Text = t.Rows[0][1].ToString();

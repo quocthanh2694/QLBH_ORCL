@@ -92,6 +92,7 @@ namespace QLBH.Formsss
                 loicthd = true;
                 thongbao += "\nVui lòng nhập số lượng";
             }
+           
             if (giaban_txt.Text == "")
                 giaban_txt.Text = "0";
             //kiem tra trung mahd va mavt khi thêm
@@ -176,7 +177,7 @@ namespace QLBH.Formsss
                 StreamReader red = new StreamReader(file);
                 string s = red.ReadLine();
                 //
-                string manv = kketnoi.laydata_dong("select n.manv from nhanvien n, dangnhap d where n.manv=d.MANV and username='"+s.Trim().ToLower()+"' ");
+                string manv = kketnoi.laydata_dong("select n.manv from nhanvien n, taikhoan d where n.manv=d.MANV and username='"+s.Trim().ToLower()+"' ");
                 red.Close();
 
                 //comd = new SqlCommand(str, kketnoi.connect);
@@ -428,6 +429,7 @@ namespace QLBH.Formsss
 
                 if (loicthd == false)
                     nhapdlCTHD();
+                CapNhatKhuyenMai_TongTG();
             }
             catch (Exception ex)
             {
@@ -438,6 +440,7 @@ namespace QLBH.Formsss
         {
             if (XtraMessageBox.Show("Bạn có muốn thêm dòng dữ liệu này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                string stt=kketnoi.laydata_dong("select max(STT)+1 from cthd");
                 string str = "insert into cthd values(:MAHD,:MASP,:SL,:KHUYENMAI,:GIABAN,:STT)";
                 kketnoi.ketnoiserver();
                 comd = new OracleCommand(str, kketnoi.connect);
@@ -446,7 +449,7 @@ namespace QLBH.Formsss
                 comd.Parameters.AddWithValue(":SL", Convert.ToDouble(soluong_txt.Text));
                 comd.Parameters.AddWithValue(":KHUYENMAI", 0);
                 comd.Parameters.AddWithValue(":GIABAN", Convert.ToDouble(giaban_txt.Text));
-                comd.Parameters.AddWithValue(":STT", kketnoi.laydata_dong("select max(STT)+1 from cthd"));
+                comd.Parameters.AddWithValue(":STT", stt);
                 comd.ExecuteNonQuery();
 
                 kketnoi.connect.Close();
@@ -487,6 +490,7 @@ namespace QLBH.Formsss
                 //kiemtraCTHD();
                 //if (loicthd == false)
                     suadlCTHD();
+                    CapNhatKhuyenMai_TongTG();
             }
         }
         private void suadlCTHD()
@@ -499,7 +503,7 @@ namespace QLBH.Formsss
                     kketnoi.ketnoiserver();
                     OracleCommand comd = new OracleCommand(str, kketnoi.connect);
                     //comd.Parameters.AddWithValue(":MAHD", mahoadon_txt.Text);
-                    comd.Parameters.AddWithValue("MAVT", mavt_txt.EditValue);
+                    comd.Parameters.AddWithValue(":MAVT", mavt_txt.EditValue);
                     comd.Parameters.AddWithValue(":SL", Convert.ToDouble(soluong_txt.Text));
                     comd.Parameters.AddWithValue(":KHUYENMAI", 0);
                     comd.Parameters.AddWithValue(":GIABAN", Convert.ToDouble(giaban_txt.Text));
@@ -556,6 +560,39 @@ namespace QLBH.Formsss
             comd.ExecuteNonQuery();
             kketnoi.connect.Close();
 
+        }
+        public void CapNhatKhuyenMai_TongTG()
+        {
+            // Khuyen mai
+            kketnoi.ketnoiserver();
+            OracleCommand cmd = new OracleCommand("UpdateKhuyenMai_CTHD",kketnoi.connect);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.Add("x", OracleType.Int32).Value = "1";
+            cmd.ExecuteNonQuery();
+
+            // TongTG
+            OracleCommand cmd1 = new OracleCommand("tinhTongTG", kketnoi.connect);
+            cmd1.CommandType = CommandType.StoredProcedure;
+            cmd1.Parameters.Add("x", OracleType.Int32).Value = "1";
+            cmd1.ExecuteNonQuery();
+
+            updatelist();
+            updatelistCTHD();
+        }
+
+        private void mavt_txt_TextChanged(object sender, EventArgs e)
+        {
+           // MessageBox.Show(mavt_txt.EditValue.ToString());
+            try
+            {
+                giaban_txt.Text = kketnoi.laydata_dong("select GIAMUA from sanpham where masp='" + mavt_txt.EditValue.ToString() + "'");
+            }
+            catch { }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            lammoiCTHD();
         }
            
     }      

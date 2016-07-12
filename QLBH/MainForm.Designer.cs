@@ -68,6 +68,7 @@
             this.khuvucbtn = new DevExpress.XtraBars.BarButtonItem();
             this.cuaHangBtn = new DevExpress.XtraBars.BarButtonItem();
             this.btnLoaiSP = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_KH_TTMH = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -143,10 +144,11 @@
             this.txtName,
             this.khuvucbtn,
             this.cuaHangBtn,
-            this.btnLoaiSP});
+            this.btnLoaiSP,
+            this.btn_KH_TTMH});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 61;
+            this.ribbonControl1.MaxItemId = 62;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -458,6 +460,15 @@
             this.btnLoaiSP.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnLoaiSP.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLoaiSP_ItemClick);
             // 
+            // btn_KH_TTMH
+            // 
+            this.btn_KH_TTMH.Caption = "Khách hàng và thông tin mua hàng";
+            this.btn_KH_TTMH.Glyph = ((System.Drawing.Image)(resources.GetObject("btn_KH_TTMH.Glyph")));
+            this.btn_KH_TTMH.Id = 61;
+            this.btn_KH_TTMH.Name = "btn_KH_TTMH";
+            this.btn_KH_TTMH.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btn_KH_TTMH.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick_3);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -539,6 +550,7 @@
             // 
             // ribbonPageGroup8
             // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.btn_KH_TTMH);
             this.ribbonPageGroup8.ItemLinks.Add(this.KhachHangVip_btn);
             this.ribbonPageGroup8.Name = "ribbonPageGroup8";
             this.ribbonPageGroup8.Text = "Khách hàng";
@@ -750,6 +762,7 @@
         private DevExpress.XtraBars.BarButtonItem khuvucbtn;
         private DevExpress.XtraBars.BarButtonItem cuaHangBtn;
         private DevExpress.XtraBars.BarButtonItem btnLoaiSP;
+        private DevExpress.XtraBars.BarButtonItem btn_KH_TTMH;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager2;
     }
 }

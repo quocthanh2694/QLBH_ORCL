@@ -11,9 +11,9 @@ using DevExpress.XtraEditors;
 
 namespace QLBH.Formsss
 {
-    public partial class KhachHangVip : DevExpress.XtraEditors.XtraForm
+    public partial class KH_TTMH : DevExpress.XtraEditors.XtraForm
     {
-        public KhachHangVip()
+        public KH_TTMH()
         {
             InitializeComponent();
         }
@@ -22,7 +22,7 @@ namespace QLBH.Formsss
         private void KhachHangVip_Load(object sender, EventArgs e)
         {
 
-            dtb = kketnoi.laydata("select * from DSKHVIP");
+            dtb = kketnoi.laydata("Select * from ThongTinTongHop");
             khachhangvip_gridcontrol.DataSource = dtb;
         }
 
