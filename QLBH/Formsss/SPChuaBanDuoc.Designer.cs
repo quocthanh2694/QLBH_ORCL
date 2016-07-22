@@ -1,6 +1,6 @@
 ﻿namespace QLBH.Formsss
 {
-    partial class SLSPDaBan
+    partial class SPChuaBanDuoc
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView1 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
             DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SLSPDaBan));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SPChuaBanDuoc));
             this.qLBANHANGDataSet = new QLBH.QLBANHANGDataSet();
             this.SLSPDaBan_gridcontrol = new DevExpress.XtraGrid.GridControl();
             this.SLSPDaBan_gridview = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -87,11 +87,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Times New Roman", 20F);
-            this.labelControl7.Location = new System.Drawing.Point(489, 22);
+            this.labelControl7.Location = new System.Drawing.Point(456, 26);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(289, 31);
+            this.labelControl7.Size = new System.Drawing.Size(393, 31);
             this.labelControl7.TabIndex = 3;
-            this.labelControl7.Text = "Số lượng sản phẩm đã bán";
+            this.labelControl7.Text = "Danh sách sản phẩm chưa bán được";
             // 
             // chartControl1
             // 
@@ -147,6 +147,7 @@
             this.groupControl1.Size = new System.Drawing.Size(210, 75);
             this.groupControl1.TabIndex = 5;
             this.groupControl1.Text = "Views";
+            this.groupControl1.Visible = false;
             // 
             // simpleButton2
             // 
@@ -168,7 +169,7 @@
             this.simpleButton1.Text = "List";
             this.simpleButton1.Click += new System.EventHandler(this.list_Click);
             // 
-            // SLSPDaBan
+            // SPChuaBanDuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -178,7 +179,7 @@
             this.Controls.Add(this.labelControl7);
             this.Controls.Add(this.SLSPDaBan_gridcontrol);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "SLSPDaBan";
+            this.Name = "SPChuaBanDuoc";
             this.Text = "SLSPDaBan";
             this.Load += new System.EventHandler(this.SLSPDaBan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.qLBANHANGDataSet)).EndInit();

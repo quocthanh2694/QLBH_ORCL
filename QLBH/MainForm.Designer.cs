@@ -168,6 +168,7 @@
             this.logoutbutton.Glyph = ((System.Drawing.Image)(resources.GetObject("logoutbutton.Glyph")));
             this.logoutbutton.Id = 1;
             this.logoutbutton.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("logoutbutton.LargeGlyph")));
+            this.logoutbutton.LargeWidth = 80;
             this.logoutbutton.Name = "logoutbutton";
             this.logoutbutton.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.logoutbutton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.logoutbutton_ItemClick);
@@ -192,9 +193,10 @@
             // 
             // aboutbutton
             // 
-            this.aboutbutton.Caption = "About!";
+            this.aboutbutton.Caption = "Thông tin!";
             this.aboutbutton.Glyph = ((System.Drawing.Image)(resources.GetObject("aboutbutton.Glyph")));
             this.aboutbutton.Id = 6;
+            this.aboutbutton.LargeWidth = 80;
             this.aboutbutton.Name = "aboutbutton";
             this.aboutbutton.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.aboutbutton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.aboutbutton_ItemClick);
@@ -272,10 +274,10 @@
             // 
             // SLSPDaBan_btn
             // 
-            this.SLSPDaBan_btn.Caption = "Số lượng SP đã bán";
+            this.SLSPDaBan_btn.Caption = "DS Sản Phẩm chưa bán được";
             this.SLSPDaBan_btn.Glyph = ((System.Drawing.Image)(resources.GetObject("SLSPDaBan_btn.Glyph")));
             this.SLSPDaBan_btn.Id = 25;
-            this.SLSPDaBan_btn.LargeWidth = 80;
+            this.SLSPDaBan_btn.LargeWidth = 100;
             this.SLSPDaBan_btn.Name = "SLSPDaBan_btn";
             this.SLSPDaBan_btn.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.SLSPDaBan_btn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.SLSPDaBan_btn_ItemClick);
@@ -307,7 +309,7 @@
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "SP tồn kho";
+            this.barButtonItem1.Caption = "Thống kê tồn kho";
             this.barButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.Glyph")));
             this.barButtonItem1.Id = 29;
             this.barButtonItem1.LargeWidth = 70;
@@ -489,13 +491,13 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.logoutbutton);
             this.ribbonPageGroup1.ItemLinks.Add(this.aboutbutton);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Account";
+            this.ribbonPageGroup1.Text = "Thông Tin Tài Khoản";
             // 
             // ribbonPageGroup3
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem2);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "Close";
+            this.ribbonPageGroup3.Text = "Đóng";
             // 
             // ribbonPage2
             // 
@@ -567,6 +569,7 @@
             this.ribbonPageGroup6.ItemLinks.Add(this.dshoadon_btn);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             this.ribbonPageGroup6.Text = "Hóa đơn";
+            this.ribbonPageGroup6.Visible = false;
             // 
             // ribbonPageGroup9
             // 
@@ -682,6 +685,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý bán hàng";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();

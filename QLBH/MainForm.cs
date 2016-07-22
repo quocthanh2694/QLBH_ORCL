@@ -136,7 +136,7 @@ namespace QLBH
             if (s.Trim().ToUpper() == "ADMIN")
             { 
                 nhanvien_btn.Enabled = true;
-                luongnhanvien_group.Visible = true;
+               // luongnhanvien_group.Visible = true;
             }
             red.Close();
             ////
@@ -193,7 +193,7 @@ namespace QLBH
         private void SLSPDaBan_btn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
            
-            Formsss.SLSPDaBan slspdaban = new Formsss.SLSPDaBan();
+            Formsss.SPChuaBanDuoc slspdaban = new Formsss.SPChuaBanDuoc();
             TapCreating(xtraTabControl1, SLSPDaBan_btn.Caption, slspdaban);
             
         }

@@ -58,7 +58,7 @@
             this.closeAbout.Name = "closeAbout";
             this.closeAbout.Size = new System.Drawing.Size(97, 30);
             this.closeAbout.TabIndex = 2;
-            this.closeAbout.Text = "Close";
+            this.closeAbout.Text = "Đóng";
             this.closeAbout.Click += new System.EventHandler(this.closeAbout_Click);
             // 
             // groupControl1
@@ -69,7 +69,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(347, 121);
             this.groupControl1.TabIndex = 3;
-            this.groupControl1.Text = "Group2 (12DTHH)";
+            this.groupControl1.Text = "Nhóm (12DTHH)";
             this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
             // 
             // label2
@@ -119,7 +119,7 @@
             this.Name = "About";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "About Quản lý bán hàng";
+            this.Text = "Thông tin Quản lý bán hàng";
             this.Load += new System.EventHandler(this.About_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);

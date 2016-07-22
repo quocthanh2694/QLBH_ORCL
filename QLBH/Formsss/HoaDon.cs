@@ -537,6 +537,7 @@ namespace QLBH.Formsss
                     if (XtraMessageBox.Show("Bạn có muốn xóa sản phẩm này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         XoadlCTHD(stt_txt.Text);
+                        CapNhatKhuyenMai_TongTG();
                     }
                     updatelistCTHD();
                     lammoiCTHD();

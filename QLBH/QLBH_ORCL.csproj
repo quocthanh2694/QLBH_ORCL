@@ -175,11 +175,11 @@
     <Compile Include="Formsss\QLKV.Designer.cs">
       <DependentUpon>QLKV.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formsss\SLSPDaBan.cs">
+    <Compile Include="Formsss\SPChuaBanDuoc.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formsss\SLSPDaBan.Designer.cs">
-      <DependentUpon>SLSPDaBan.cs</DependentUpon>
+    <Compile Include="Formsss\SPChuaBanDuoc.Designer.cs">
+      <DependentUpon>SPChuaBanDuoc.cs</DependentUpon>
     </Compile>
     <Compile Include="Formsss\SPTonKho.cs">
       <SubType>Form</SubType>
@@ -316,8 +316,8 @@
     <EmbeddedResource Include="Formsss\QLKV.resx">
       <DependentUpon>QLKV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formsss\SLSPDaBan.resx">
-      <DependentUpon>SLSPDaBan.cs</DependentUpon>
+    <EmbeddedResource Include="Formsss\SPChuaBanDuoc.resx">
+      <DependentUpon>SPChuaBanDuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formsss\SPTonKho.resx">
       <DependentUpon>SPTonKho.cs</DependentUpon>
